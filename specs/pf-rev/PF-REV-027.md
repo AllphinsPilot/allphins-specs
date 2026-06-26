@@ -1,36 +1,32 @@
 ---
-title: A portfolio can be deleted
+title: A data source can be downloaded
 
 mode: manual
 oracle: intentional
 status: draft
-priority: medium
+priority: low
 
-tags: [regression, portfolio]
-source: "Notion: Portfolio Review / Portfolio - Edit / Delete Portfolio (src 36)"
+tags: [regression, portfolio, datasource]
+source: "Notion: Portfolio Review / Data Sources / Download DataSource (src 51)"
 refs: []
 
 ---
 
 ## Objective
-Prove a portfolio is deleted and that deleting a renewal portfolio removes the original's link to it.
+Prove a data source can be downloaded from the Actions menu.
 
 ## Preconditions
-- A portfolio exists; for the second scenario, a renewal portfolio linked to an original exists.
+- A data source exists.
 
-## Scenario: delete a portfolio
+## Scenario: download a data source
 ```gherkin
-Given a portfolio
-When the user deletes it
-Then the portfolio is deleted
+Given a data source
+When the user clicks Actions then Download
+Then the data source file is downloaded
 ```
 
-## Scenario: deleting a renewal clears the original's link
-```gherkin
-Given a renewal portfolio linked to an original
-When the renewal portfolio is deleted
-Then the original no longer links to it
-```
+## Assumptions
+- Source gives steps but no explicit outcome; inferred a file download.
 
 ## References
 - Source manual case in Notion (see `source`).

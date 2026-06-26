@@ -1,36 +1,29 @@
 ---
-title: Deleting a policy updates aggregation
+title: Policy special conditions are reflected in aggregation
 
 mode: manual
 oracle: intentional
 status: draft
-priority: high
+priority: medium
 
 tags: [regression, portfolio, policy]
-source: "Notion: Portfolio Review / Policies tab / Delete single policy (src 10, 52)"
+source: "Notion: Portfolio Review / Policies tab / Special conditions (src 12)"
 refs: []
 
 ---
 
 ## Objective
-Prove a policy can be deleted and that deleting a layer updates the aggregation that depended on it.
+Prove that sublimits, exclusions, and filters set on a policy are taken into account in both scenario-list and custom-scenario aggregation.
 
 ## Preconditions
-- A portfolio with two policies exists: one XoL and one QS that benefits from the XoL.
+- A policy exists in a portfolio that contributes to an aggregation.
 
-## Scenario: delete a policy from the dustbin
+## Scenario: special conditions affect the aggregation
 ```gherkin
-Given a portfolio with a policy
-When the user clicks the policy's dustbin button
-Then the policy is deleted
-```
-
-## Scenario: deleting a layer updates the dependent aggregation
-```gherkin
-Given a portfolio with an XoL and a QS that benefits from it
-And the aggregation has been noted
-When the user deletes the XoL
-Then the aggregation for the dependent QS changes
+Given a policy's expanded popup
+When the user sets sublimits, an exclusion, and a filter
+Then the special conditions are reflected in the scenario-list aggregation
+And they are reflected in the custom-scenario aggregation
 ```
 
 ## References

@@ -1,30 +1,28 @@
 ---
-title: Policy dates persist after editing
+title: A single risk can be created
 
 mode: manual
 oracle: intentional
 status: draft
-priority: low
+priority: medium
 
-tags: [regression, portfolio, policy]
-source: "Notion: Portfolio Review / Policies tab / Edit policy dates (src 60)"
+tags: [regression, portfolio, risk]
+source: "Notion: Portfolio Review / Risks / Create single risk (src 21)"
 refs: []
 
 ---
 
 ## Objective
-Prove edited policy dates are kept after save and after copy/paste.
+Prove a manually created risk is saved and findable.
 
 ## Preconditions
-- A policy exists in a portfolio.
+- A portfolio is open on the Risks tab.
 
-## Scenario: dates persist
+## Scenario: create and find a risk
 ```gherkin
-Given a policy popup
-When the user changes the dates and saves
-Then the same dates are displayed
-When the policy is copied and pasted
-Then the same dates are displayed on the copy
+Given the Risks tab
+When the user clicks Add then Single Risk and creates it
+Then the risk is found when searched
 ```
 
 ## References

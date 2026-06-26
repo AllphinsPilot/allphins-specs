@@ -1,41 +1,39 @@
 ---
-title: Meta-attributes fill on match and clear on unmatch
+title: Smart algos produce results matching their definitions
 
 mode: manual
 oracle: intentional
 status: draft
-priority: medium
+priority: high
 
-tags: [regression, portfolio, risk, cyber, casualty, pr]
-source: "Notion: Portfolio Review / Risks / Meta-attributes on match (src 25)"
+tags: [regression, portfolio, risk, energy, cyber, casualty]
+source: "Notion: Portfolio Review / Risks / Smart algos (src 33)"
 refs: []
 
 ---
 
 ## Objective
-Prove matching an Asset, Insured, or Obligor fills the derived meta-attributes, and removing the match clears them.
+Prove the smart algorithms produce results consistent with their definitions.
 
 ## Preconditions
-- A risk that can be matched to an Asset, Insured, or Obligor exists.
+- A portfolio with risks suitable for each algorithm exists.
 
-## Scenario: match fills meta-attributes, unmatch clears them
+## Scenario: algos match their definitions
 ```gherkin
-Given a risk
-When the user matches its <entity>
-Then the derived meta-attributes are filled accordingly
-When the user removes the match and saves
-Then the <entity> is unmatched
+Given a portfolio with applicable risks
+When the user applies the <algo>
+Then the result matches that algorithm's definition
 ```
 
 ### Examples
-| entity |
-|--------|
-| Asset |
-| Insured (Cyber/Casualty/PR) |
-| Obligor (PR) |
+| algo |
+|------|
+| Double-counting (Energy) |
+| De-duplication (Cyber/Casualty) |
+| Simulating risks (Cyber/Casualty) |
 
 ## Assumptions
-- For Asset, the derived fields confirmed in source are Asset group and Country. The exact derived fields for Insured and Obligor are not stated; confirm them.
+- The oracle is "matches the algo definition" but the definitions are not in the source. Each algorithm's expected behaviour must be supplied as a companion doc before this can be asserted. Link it in References.
 
 ## References
 - Source manual case in Notion (see `source`).

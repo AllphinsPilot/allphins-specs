@@ -1,33 +1,32 @@
 ---
-title: Matching risks from a data source
+title: A data source can be uploaded
 
 mode: manual
 oracle: intentional
 status: draft
 priority: medium
 
-tags: [regression, portfolio, risk, datasource]
-source: "Notion: Portfolio Review / Risks / Matching (src 37)"
+tags: [regression, portfolio, datasource]
+source: "Notion: Portfolio Review / Data Sources / Upload a DataSource (src 43)"
 refs: []
 
 ---
 
 ## Objective
-Prove that uploading a data source produces correct matching results for its risks.
+Prove a data source can be uploaded from the drag-and-drop area and is processed.
 
 ## Preconditions
-- A data source whose risks should match known assets/insureds/obligors is available.
+- A valid data source file is available.
 
-## Scenario: matching results are correct
+## Scenario: upload a data source
 ```gherkin
-Given a data source is uploaded
-When matching runs
-Then the risks are matched to the correct entities
-And their derived meta-attributes are filled
+Given the data-source drag-and-drop area on a page
+When the user drops a valid file
+Then the data source is uploaded and processed
 ```
 
 ## Assumptions
-- Source says only "validate matching results" with no criteria. Inferred that correct matching links each risk to its expected entity and fills the derived fields. Confirm what "correct" means per LoB.
+- Source step is truncated ("In the Drag&Drop area") with no outcome; inferred that a dropped file uploads and processes. Confirm the success indication.
 
 ## References
 - Source manual case in Notion (see `source`).

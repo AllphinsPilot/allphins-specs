@@ -1,29 +1,38 @@
 ---
-title: A data source mapping can be edited
+title: Scenario selection updates Pricing and Evolution
 
 mode: manual
 oracle: intentional
 status: draft
 priority: low
 
-tags: [regression, portfolio, datasource]
-source: "Notion: Portfolio Review / Data Source / Edit a DataSource Mapping (src 47)"
+tags: [regression, portfolio, pricing, evolution]
+source: "Notion: Portfolio Review / Pricing & Evolution / Scenario dropdown (src 57, 62)"
 refs: []
 
 ---
 
 ## Objective
-Prove edits to an existing mapping are applied.
+Prove selecting a scenario from the dropdown updates the tab's figures.
 
 ## Preconditions
-- A mapped data source exists.
+- A portfolio with multiple scenarios available exists.
 
-## Scenario: edit mapping
+## Scenario: scenario selection updates the view
 ```gherkin
-Given a mapped data source
-When the user edits the mapping and clicks Finish
-Then the changes are applied
+Given a portfolio open on the <tab> tab
+When the user selects a different scenario from the dropdown
+Then the displayed figures update for that scenario
 ```
+
+### Examples
+| tab |
+|------|
+| Pricing |
+| Evolution |
+
+## Assumptions
+- Source says only "the scenario choice works"; inferred that selecting a scenario updates the figures shown.
 
 ## References
 - Source manual case in Notion (see `source`).

@@ -1,28 +1,30 @@
 ---
-title: Total Premium equals the sum of premium times share
+title: Policy dates persist after editing
 
 mode: manual
 oracle: intentional
 status: draft
-priority: medium
+priority: low
 
 tags: [regression, portfolio, policy]
-source: "Notion: Portfolio Review / Policies tab / Total Premium (src 56)"
+source: "Notion: Portfolio Review / Policies tab / Edit policy dates (src 60)"
 refs: []
 
 ---
 
 ## Objective
-Prove Total Premium is the sum over policies of displayed premium multiplied by share.
+Prove edited policy dates are kept after save and after copy/paste.
 
 ## Preconditions
-- A portfolio with several policies and known premiums and shares exists.
+- A policy exists in a portfolio.
 
-## Scenario: total premium formula
+## Scenario: dates persist
 ```gherkin
-Given a portfolio with policies
-When Total Premium is displayed
-Then it equals the sum over policies of premium multiplied by share
+Given a policy popup
+When the user changes the dates and saves
+Then the same dates are displayed
+When the policy is copied and pasted
+Then the same dates are displayed on the copy
 ```
 
 ## References

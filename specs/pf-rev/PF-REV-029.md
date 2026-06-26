@@ -1,32 +1,29 @@
 ---
-title: A data source can be uploaded
+title: Cedant aggregation shows data when considered for a scenario list
 
 mode: manual
 oracle: intentional
 status: draft
-priority: medium
+priority: low
 
-tags: [regression, portfolio, datasource]
-source: "Notion: Portfolio Review / Data Sources / Upload a DataSource (src 43)"
+tags: [regression, portfolio, aggregation]
+source: "Notion: Portfolio Review / Cedant aggregations / Display (src 53)"
 refs: []
 
 ---
 
 ## Objective
-Prove a data source can be uploaded from the drag-and-drop area and is processed.
+Prove the Cedant agg shows data when the portfolio is considered for the chosen scenario list.
 
 ## Preconditions
-- A valid data source file is available.
+- A portfolio that is considered for a chosen scenario list exists.
 
-## Scenario: upload a data source
+## Scenario: cedant agg has data
 ```gherkin
-Given the data-source drag-and-drop area on a page
-When the user drops a valid file
-Then the data source is uploaded and processed
+Given a portfolio considered for a chosen scenario list
+When the user opens Cedant agg
+Then it shows data
 ```
-
-## Assumptions
-- Source step is truncated ("In the Drag&Drop area") with no outcome; inferred that a dropped file uploads and processes. Confirm the success indication.
 
 ## References
 - Source manual case in Notion (see `source`).

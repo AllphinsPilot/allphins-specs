@@ -1,29 +1,29 @@
 ---
-title: Policy special conditions are reflected in aggregation
+title: Policy popup shows the policy's information
 
 mode: manual
 oracle: intentional
 status: draft
-priority: medium
+priority: low
 
 tags: [regression, portfolio, policy]
-source: "Notion: Portfolio Review / Policies tab / Special conditions (src 12)"
+source: "Notion: Portfolio Review / Policies tab / Policy pop-up (src 42)"
 refs: []
 
 ---
 
 ## Objective
-Prove that sublimits, exclusions, and filters set on a policy are taken into account in both scenario-list and custom-scenario aggregation.
+Prove that opening a policy shows the correct popup with the same information as its row.
 
 ## Preconditions
-- A policy exists in a portfolio that contributes to an aggregation.
+- A portfolio with at least one policy exists.
 
-## Scenario: special conditions affect the aggregation
+## Scenario: opening a policy shows its details
 ```gherkin
-Given a policy's expanded popup
-When the user sets sublimits, an exclusion, and a filter
-Then the special conditions are reflected in the scenario-list aggregation
-And they are reflected in the custom-scenario aggregation
+Given a portfolio with a policy
+When the user clicks the policy
+Then the correct policy popup opens
+And it shows the same information as the policy line
 ```
 
 ## References

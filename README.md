@@ -17,6 +17,9 @@ specs/<area>/<ID>.md
   the path is the id.
 - **area** is the folder (e.g. `auth`). There is no `area` field; the folder is the area.
   The folder name is the lowercased ID prefix, so `pf-new/PF-NEW-002.md`.
+- A multi-step **flow** (e.g. importing portfolios) is **not** one multi-scenario spec. It is
+  its own area whose specs are the individual scenarios, e.g. `book-003/BOOK-003-001.md` …
+  `BOOK-003-005.md`. Each scenario stays atomic and independently runnable.
 
 ### Front-matter fields
 
@@ -35,8 +38,10 @@ specs/<area>/<ID>.md
 
 - **Objective**, what behaviour this proves and why it matters.
 - **Preconditions**, state required before the scenario runs.
-- **Scenario: \<name\>**, one or more, each a fenced ```gherkin``` block. Families use an
-  `### Examples` table beneath the scenario.
+- **Scenario: \<name\>**, **exactly one per spec**. A spec describes a single, atomic,
+  independent scenario. It may carry an `### Examples` table beneath the scenario to
+  parameterise it, but it never contains a second `## Scenario:`. A behaviour that needs
+  several scenarios is modelled as its own area (see above), one spec per scenario.
 - **Assumptions**, present only when an oracle was inferred during derivation. Each line is
   an inference a reviewer must confirm or correct. This is the review gate.
 - **References**, companion docs, data-setup notes, the source case.
@@ -44,23 +49,27 @@ specs/<area>/<ID>.md
 ## Validation
 
 `spec.schema.json` validates the front-matter (run in CI). It is strict: unknown keys and
-bad enum values fail. A separate path lint enforces that every spec lives at
-`specs/<area>/<ID>.md`, that the folder matches the ID prefix, and that IDs are unique.
+bad enum values fail. `.github/scripts/validate_specs.py` is the structural lint: it
+enforces that every spec lives at `specs/<area>/<ID>.md`, that the folder matches the ID
+prefix, that IDs are unique, and that **each spec contains exactly one `## Scenario:`**.
+`generate_indexes.py --check` separately verifies the index files are in sync.
 
 ## Status of this batch
 
-Derived so far: areas **auth**, **book**, **pf-new**, **pf-rev**, and **agg**, 65 specs
-from 85 of the 153 source cases. Every spec is `draft` and needs review, with special
-attention to the **Assumptions** sections where an oracle was inferred. Notes:
+Derived so far: **91 specs** from **93 of the 153 source cases**, across the base areas
+**auth**, **book**, **pf-new**, **pf-rev**, **agg** plus the per-flow areas (e.g.
+`book-003`, `pf-rev-040`) created when a source behaviour spans several scenarios. Every
+spec is `draft` and needs review, with special attention to the **Assumptions** sections
+where an oracle was inferred. Notes:
 
 - `book` case "Filters&Search" (source row 17) was intentionally **not** derived: it was
   classified no-oracle / do-not-concretize and stays a manual check outside this repo. It
-  is one of 68 source cases left `deferred` (see the classification CSV for the per-row
+  is one of 60 source cases left `deferred` (see the classification CSV for the per-row
   reason, most are whole sections not yet processed: Aggregation detail, Risks, Policies,
   Databases, Home page, Portfolio Optimisation, Scenario Cards).
-- Several families were folded: the import flow is one spec with multiple scenarios, the
-  template download and the two renewal entry points use `Examples` tables, and the
-  aggregation filter rules are grouped into a few specs.
+- Behaviours that span several scenarios are modelled as their own area with one spec per
+  scenario (e.g. the import flow is `book-003/`, audit history is `pf-rev-040/`); single
+  parameterised cases use an `### Examples` table within their one scenario.
 - Provenance for every spec is in its `source` field; the full classification of all 153
   source cases lives in [`testcase-classification.csv`](testcase-classification.csv), one
   row per source case with its `oracle` verdict, `disposition` (`derived`/`deferred`),

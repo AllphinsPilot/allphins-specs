@@ -1,29 +1,28 @@
 ---
-title: Benefit-from loops between layers are forbidden
+title: A policy share of 0% is allowed
 
 mode: manual
 oracle: intentional
 status: draft
-priority: medium
+priority: low
 
 tags: [regression, portfolio, policy]
-source: "Notion: Portfolio Review / Policies tab / Forbid loops with Benefit from (src 46)"
+source: "Notion: Portfolio Review / Policies tab / Policy share of 0% (src 48)"
 refs: []
 
 ---
 
 ## Objective
-Prove the platform prevents a circular benefit-from relationship between two layers.
+Prove that entering a 0% share on a policy is accepted.
 
 ## Preconditions
-- A portfolio with two layers A and B exists.
+- A policy exists in a portfolio.
 
-## Scenario: a benefit-from cycle is prevented
+## Scenario: zero share is accepted
 ```gherkin
-Given a portfolio with layers A and B
-When A is set to benefit from B
-And the user tries to set B to benefit from A
-Then the action is prevented
+Given a policy
+When the user sets its share to 0%
+Then the value is accepted
 ```
 
 ## References

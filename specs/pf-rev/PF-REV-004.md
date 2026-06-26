@@ -1,32 +1,29 @@
 ---
-title: Policy labels can be managed
+title: Benefit-from loops between layers are forbidden
 
 mode: manual
 oracle: intentional
 status: draft
-priority: low
+priority: medium
 
 tags: [regression, portfolio, policy]
-source: "Notion: Portfolio Review / Policies tab / Policy labels (src 44)"
+source: "Notion: Portfolio Review / Policies tab / Forbid loops with Benefit from (src 46)"
 refs: []
 
 ---
 
 ## Objective
-Prove labels can be added, recoloured, unselected, and deleted, with changes persisting across reopening the policy drawer.
+Prove the platform prevents a circular benefit-from relationship between two layers.
 
 ## Preconditions
-- A portfolio with a policy exists.
+- A portfolio with two layers A and B exists.
 
-## Scenario: manage labels
+## Scenario: a benefit-from cycle is prevented
 ```gherkin
-Given a policy drawer is open
-When the user adds several labels and creates a new one
-Then the new labels are saved
-When the user changes a label's colour
-Then the colour change is saved
-When the user unselects a label and reopens the drawer
-Then that label is absent
+Given a portfolio with layers A and B
+When A is set to benefit from B
+And the user tries to set B to benefit from A
+Then the action is prevented
 ```
 
 ## References

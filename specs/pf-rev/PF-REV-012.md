@@ -1,32 +1,29 @@
 ---
-title: Policies tab renders
+title: A single risk can be edited
 
 mode: manual
-oracle: characterization
+oracle: intentional
 status: draft
 priority: low
 
-tags: [regression, portfolio, policy]
-source: "Notion: Portfolio Review / Policies tab / Display (src 40)"
+tags: [regression, portfolio, risk]
+source: "Notion: Portfolio Review / Risks / Edit single risk (src 23)"
 refs: []
 
 ---
 
 ## Objective
-Catch accidental breakage of the policies-tab layout. Regression tripwire, not a correctness claim.
+Prove a risk's SOV, currencies, and attributes can be edited.
 
 ## Preconditions
-- A portfolio with policies exists.
+- A portfolio with a risk exists.
 
-## Scenario: policies tab matches the accepted baseline
+## Scenario: edit a risk
 ```gherkin
-Given a portfolio is open on the Policies tab
-When the tab is displayed
-Then the rendered tab matches the accepted baseline
+Given a risk
+When the user opens it and edits SOV, currency, and attributes
+Then the changes are saved
 ```
-
-## Assumptions
-- No correctness oracle in source ("good display, no scroll"). Handled as characterization against an approved baseline.
 
 ## References
 - Source manual case in Notion (see `source`).

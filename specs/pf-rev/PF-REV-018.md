@@ -1,5 +1,5 @@
 ---
-title: Muting a risk removes it from aggregation
+title: Bulk actions on risks behave as expected
 
 mode: manual
 oracle: intentional
@@ -7,24 +7,31 @@ status: draft
 priority: medium
 
 tags: [regression, portfolio, risk]
-source: "Notion: Portfolio Review / Risks / Muting single risks (src 27)"
+source: "Notion: Portfolio Review / Risks / Actions on risks (src 35)"
 refs: []
 
 ---
 
 ## Objective
-Prove a muted risk is no longer counted in the aggregation, from both the portfolio Risks tab and the Risks page.
+Prove the per-risk and multi-select actions each have their expected effect.
 
 ## Preconditions
-- A risk that contributes to an aggregation exists.
+- A portfolio with several risks exists.
 
-## Scenario: muting excludes the risk
+## Scenario: each action has its effect
 ```gherkin
-Given a risk that contributes to an aggregation
-When the user mutes it from the portfolio Risks tab
-Then it is no longer considered in the aggregation
-And the same holds when muting from the Risks page
+Given one or more selected risks
+When the user performs <action>
+Then <effect>
 ```
+
+### Examples
+| action | effect |
+|--------|--------|
+| Delete | the risks are removed |
+| Edit an attribute | the attribute is updated on the risks |
+| Mute | the risks are excluded from aggregation |
+| Unmute | the risks are included again |
 
 ## References
 - Source manual case in Notion (see `source`).

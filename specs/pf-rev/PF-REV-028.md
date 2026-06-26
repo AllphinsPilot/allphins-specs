@@ -1,28 +1,30 @@
 ---
-title: Portfolio names must be unique
+title: A Scenario List report can be mapped as a data source
 
 mode: manual
 oracle: intentional
 status: draft
-priority: low
+priority: medium
 
-tags: [regression, portfolio]
-source: "Notion: Portfolio Review / Portfolio - Edit / Name cannot be reused (src 38)"
+tags: [regression, portfolio, datasource]
+source: "Notion: Portfolio Review / Data Sources / Map a Scenario List report as DataSource (src 146)"
 refs: []
 
 ---
 
 ## Objective
-Prove a portfolio cannot be renamed to an already-existing name.
+Prove a generated Scenario List report can be uploaded as a data source and is recognised as an Allphins aggregation with cedant agg.
 
 ## Preconditions
-- Two portfolios exist.
+- A generated Scenario List report is available; a new portfolio exists to receive it.
 
-## Scenario: duplicate name refused
+## Scenario: map an SL report
 ```gherkin
-Given an existing portfolio name
-When the user renames another portfolio to that name
-Then the change is refused
+Given a generated Scenario List report
+When the user uploads it as the portfolio's data source
+Then scenario id, scenario name, and exposure are listed in the mapping modal
+And the data source is listed as an Aggregation with provider "Allphins"
+And the cedant agg is filled
 ```
 
 ## References

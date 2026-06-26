@@ -1,43 +1,29 @@
 ---
-title: Expand on a risk popup
+title: A data source mapping can be edited
 
 mode: manual
 oracle: intentional
 status: draft
 priority: low
 
-tags: [regression, portfolio, risk, energy]
-source: "Notion: Portfolio Review / Risks / Expand risk popup (src 41, 104)"
+tags: [regression, portfolio, datasource]
+source: "Notion: Portfolio Review / Data Source / Edit a DataSource Mapping (src 47)"
 refs: []
 
 ---
 
 ## Objective
-Prove Expand opens the risk as a full page with a map for geolocated Energy risks, and that Expand is available only for Excel risks, not EDM ones.
+Prove edits to an existing mapping are applied.
 
 ## Preconditions
-- A portfolio with both Excel and EDM risks, including a geolocated Energy risk, exists.
+- A mapped data source exists.
 
-## Scenario: expand opens a full page with a map for Energy
+## Scenario: edit mapping
 ```gherkin
-Given a geolocated Energy risk
-When the user clicks Expand
-Then the risk edit popup is shown as a page
-And a map is shown
+Given a mapped data source
+When the user edits the mapping and clicks Finish
+Then the changes are applied
 ```
-
-## Scenario: expand availability by source
-```gherkin
-Given a risk
-When the user opens it
-Then the Expand option is <state>
-```
-
-### Examples
-| risk source | state |
-|-------------|-------|
-| EDM | not present |
-| Excel | present |
 
 ## References
 - Source manual case in Notion (see `source`).

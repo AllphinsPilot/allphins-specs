@@ -1,28 +1,28 @@
 ---
-title: A policy can be duplicated
+title: Total Premium equals the sum of premium times share
 
 mode: manual
 oracle: intentional
 status: draft
-priority: low
+priority: medium
 
 tags: [regression, portfolio, policy]
-source: "Notion: Portfolio Review / Policies tab / Duplicate a policy (src 50)"
+source: "Notion: Portfolio Review / Policies tab / Total Premium (src 56)"
 refs: []
 
 ---
 
 ## Objective
-Prove copy/paste creates a new policy with the same parameters.
+Prove Total Premium is the sum over policies of displayed premium multiplied by share.
 
 ## Preconditions
-- A policy exists in a portfolio.
+- A portfolio with several policies and known premiums and shares exists.
 
-## Scenario: duplicate keeps parameters
+## Scenario: total premium formula
 ```gherkin
-Given a policy
-When the user clicks the copy/paste button
-Then a new policy is created with the same parameters
+Given a portfolio with policies
+When Total Premium is displayed
+Then it equals the sum over policies of premium multiplied by share
 ```
 
 ## References

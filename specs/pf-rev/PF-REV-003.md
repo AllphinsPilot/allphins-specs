@@ -1,5 +1,5 @@
 ---
-title: Policy popup shows the policy's information
+title: Policy labels can be managed
 
 mode: manual
 oracle: intentional
@@ -7,23 +7,26 @@ status: draft
 priority: low
 
 tags: [regression, portfolio, policy]
-source: "Notion: Portfolio Review / Policies tab / Policy pop-up (src 42)"
+source: "Notion: Portfolio Review / Policies tab / Policy labels (src 44)"
 refs: []
 
 ---
 
 ## Objective
-Prove that opening a policy shows the correct popup with the same information as its row.
+Prove labels can be added, recoloured, unselected, and deleted, with changes persisting across reopening the policy drawer.
 
 ## Preconditions
-- A portfolio with at least one policy exists.
+- A portfolio with a policy exists.
 
-## Scenario: opening a policy shows its details
+## Scenario: manage labels
 ```gherkin
-Given a portfolio with a policy
-When the user clicks the policy
-Then the correct policy popup opens
-And it shows the same information as the policy line
+Given a policy drawer is open
+When the user adds several labels and creates a new one
+Then the new labels are saved
+When the user changes a label's colour
+Then the colour change is saved
+When the user unselects a label and reopens the drawer
+Then that label is absent
 ```
 
 ## References

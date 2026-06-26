@@ -1,29 +1,32 @@
 ---
-title: Deployed Limit updates when a policy changes
+title: Policies tab renders
 
 mode: manual
-oracle: intentional
+oracle: characterization
 status: draft
-priority: medium
+priority: low
 
 tags: [regression, portfolio, policy]
-source: "Notion: Portfolio Review / Policies tab / Deployed Limit (src 58)"
+source: "Notion: Portfolio Review / Policies tab / Display (src 40)"
 refs: []
 
 ---
 
 ## Objective
-Prove the portfolio's Deployed Limit adapts when a policy's share, limit, or excess changes.
+Catch accidental breakage of the policies-tab layout. Regression tripwire, not a correctness claim.
 
 ## Preconditions
-- A portfolio with at least one policy exists.
+- A portfolio with policies exists.
 
-## Scenario: deployed limit adapts
+## Scenario: policies tab matches the accepted baseline
 ```gherkin
-Given a portfolio with a known Deployed Limit
-When a policy's share, limit, or excess is changed
-Then the Deployed Limit on the portfolio page adapts accordingly
+Given a portfolio is open on the Policies tab
+When the tab is displayed
+Then the rendered tab matches the accepted baseline
 ```
+
+## Assumptions
+- No correctness oracle in source ("good display, no scroll"). Handled as characterization against an approved baseline.
 
 ## References
 - Source manual case in Notion (see `source`).

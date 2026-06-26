@@ -1,39 +1,41 @@
 ---
-title: Risk list shows the right columns and risks
+title: Meta-attributes fill on match and clear on unmatch
 
 mode: manual
 oracle: intentional
 status: draft
 priority: medium
 
-tags: [regression, portfolio, risk]
-source: "Notion: Portfolio Review / Risks / Display (src 14)"
+tags: [regression, portfolio, risk, cyber, casualty, pr]
+source: "Notion: Portfolio Review / Risks / Meta-attributes on match (src 25)"
 refs: []
 
 ---
 
 ## Objective
-Prove the risk list shows columns matching the portfolio's risk class, and shows no Risks for Terror when only EDMs are uploaded.
+Prove matching an Asset, Insured, or Obligor fills the derived meta-attributes, and removing the match clears them.
 
 ## Preconditions
-- A portfolio with risks exists.
+- A risk that can be matched to an Asset, Insured, or Obligor exists.
 
-## Scenario: columns match the risk class
+## Scenario: match fills meta-attributes, unmatch clears them
 ```gherkin
-Given a portfolio open on the Risks tab
-When the risk list is displayed
-Then the columns correspond to the portfolio's risk class
+Given a risk
+When the user matches its <entity>
+Then the derived meta-attributes are filled accordingly
+When the user removes the match and saves
+Then the <entity> is unmatched
 ```
 
-## Scenario: no Terror risks from EDMs only
-```gherkin
-Given a Terror portfolio where only EDMs are uploaded
-When the risk list is displayed
-Then no Risks are shown
-```
+### Examples
+| entity |
+|--------|
+| Asset |
+| Insured (Cyber/Casualty/PR) |
+| Obligor (PR) |
 
 ## Assumptions
-- The subjective "display okay / no scroll" part of the source is dropped; only the two assertable rules are kept.
+- For Asset, the derived fields confirmed in source are Asset group and Country. The exact derived fields for Insured and Obligor are not stated; confirm them.
 
 ## References
 - Source manual case in Notion (see `source`).

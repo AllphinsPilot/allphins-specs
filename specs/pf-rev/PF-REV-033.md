@@ -1,32 +1,29 @@
 ---
-title: A data source can be downloaded
+title: Analytics tables populate when a risk exists
 
 mode: manual
 oracle: intentional
 status: draft
 priority: low
 
-tags: [regression, portfolio, datasource]
-source: "Notion: Portfolio Review / Data Sources / Download DataSource (src 51)"
+tags: [regression, portfolio, analytics, casualty, cyber]
+source: "Notion: Portfolio Review / Analytics / Display (src 64)"
 refs: []
 
 ---
 
 ## Objective
-Prove a data source can be downloaded from the Actions menu.
+Prove the Analytics tables are filled when the portfolio has at least one risk. Relevant only for Casualty and Cyber.
 
 ## Preconditions
-- A data source exists.
+- A Casualty or Cyber portfolio with at least one entered or uploaded risk exists.
 
-## Scenario: download a data source
+## Scenario: tables fill with a risk
 ```gherkin
-Given a data source
-When the user clicks Actions then Download
-Then the data source file is downloaded
+Given a Casualty or Cyber portfolio with at least one risk
+When the Analytics tab is displayed
+Then its tables are filled
 ```
-
-## Assumptions
-- Source gives steps but no explicit outcome; inferred a file download.
 
 ## References
 - Source manual case in Notion (see `source`).

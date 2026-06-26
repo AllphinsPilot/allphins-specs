@@ -1,32 +1,29 @@
 ---
-title: Portfolio attributes can be edited
+title: Deleting a data source removes its risks
 
 mode: manual
 oracle: intentional
 status: draft
-priority: low
+priority: medium
 
-tags: [regression, portfolio]
-source: "Notion: Portfolio Review / Portfolio - Edit / Edit Portfolio Attributes (src 34)"
+tags: [regression, portfolio, datasource]
+source: "Notion: Portfolio Review / Data Sources / Delete DataSource (src 49)"
 refs: []
 
 ---
 
 ## Objective
-Prove a portfolio's name and client can be edited and persist.
+Prove deleting a data source removes it and its associated risks.
 
 ## Preconditions
-- A portfolio exists.
+- A data source with associated risks exists.
 
-## Scenario: edit name and client
+## Scenario: delete a data source
 ```gherkin
-Given a portfolio
-When the user edits its name and client
-Then the changes are saved
+Given a data source with associated risks
+When the user deletes it via the Actions menu
+Then the data source and its associated risks are deleted
 ```
-
-## Assumptions
-- Source lists the edits but no outcome; inferred that the edits persist.
 
 ## References
 - Source manual case in Notion (see `source`).

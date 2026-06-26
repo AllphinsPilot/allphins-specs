@@ -1,44 +1,29 @@
 ---
-title: Test Structure result equals Deployed Limit
+title: Deployed Limit updates when a policy changes
 
 mode: manual
 oracle: intentional
 status: draft
-priority: high
+priority: medium
 
 tags: [regression, portfolio, policy]
-source: "Notion: Portfolio Review / Policies tab / Test Structure vs Deployed Limit (src 54)"
+source: "Notion: Portfolio Review / Policies tab / Deployed Limit (src 58)"
 refs: []
 
 ---
 
 ## Objective
-Prove the Test Structure result is consistent with Deployed Limit across policy configurations.
+Prove the portfolio's Deployed Limit adapts when a policy's share, limit, or excess changes.
 
 ## Preconditions
-- A portfolio with a single XoL policy exists.
+- A portfolio with at least one policy exists.
 
-## Scenario: test structure matches deployed limit for an XoL
+## Scenario: deployed limit adapts
 ```gherkin
-Given a portfolio with only an XoL policy
-When the user runs Test Structure with 100bn
-Then the result equals the Deployed Limit
+Given a portfolio with a known Deployed Limit
+When a policy's share, limit, or excess is changed
+Then the Deployed Limit on the portfolio page adapts accordingly
 ```
-
-## Scenario: consistency holds across policy configurations
-```gherkin
-Given the portfolio's policies are changed to <config>
-When the user runs Test Structure again
-Then the result stays consistent with Deployed Limit
-```
-
-### Examples
-| config |
-|--------|
-| a QS with a limit |
-| a QS without a limit |
-| an XoL with excess and limit |
-| QS benefits-from cases |
 
 ## References
 - Source manual case in Notion (see `source`).

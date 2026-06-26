@@ -1,40 +1,38 @@
 ---
-title: A data source can be mapped
+title: Pricing and Evolution tabs render
 
 mode: manual
-oracle: intentional
+oracle: characterization
 status: draft
-priority: medium
+priority: low
 
-tags: [regression, portfolio, datasource]
-source: "Notion: Portfolio Review / Data Sources / Map a DataSource (src 45)"
+tags: [regression, portfolio, pricing, evolution]
+source: "Notion: Portfolio Review / Pricing & Evolution / Display&Numbers (src 55, 61)"
 refs: []
 
 ---
 
 ## Objective
-Prove the mapping modal works for each data source type.
+Catch accidental breakage of the Pricing and Evolution tab layouts. Regression tripwire, not a correctness claim.
 
 ## Preconditions
-- An uploaded data source of the given type is available.
+- A portfolio with pricing and evolution data exists.
 
-## Scenario: map a data source by type
+## Scenario: tab matches the accepted baseline
 ```gherkin
-Given an uploaded <type> data source
-When the user opens its mapping modal and completes the mapping
-Then the mapping is saved
+Given a portfolio open on the <tab> tab
+When the tab is displayed
+Then the rendered tab matches the accepted baseline
 ```
 
 ### Examples
-| type |
+| tab |
 |------|
-| Excel |
-| EDM |
-| CEDE |
-| Cedant agg |
+| Pricing |
+| Evolution |
 
 ## Assumptions
-- Source lists the four mapping modals with no per-type outcome; inferred each mapping completes and saves. Confirm any type-specific differences.
+- Source for both is subjective ("data present, display correct"); handled as characterization against an approved baseline.
 
 ## References
 - Source manual case in Notion (see `source`).

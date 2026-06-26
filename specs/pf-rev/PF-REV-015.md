@@ -1,28 +1,28 @@
 ---
-title: A single risk can be created
+title: Uploading a second data source adds its risks
 
 mode: manual
 oracle: intentional
 status: draft
-priority: medium
+priority: low
 
-tags: [regression, portfolio, risk]
-source: "Notion: Portfolio Review / Risks / Create single risk (src 21)"
+tags: [regression, portfolio, risk, datasource]
+source: "Notion: Portfolio Review / Risks / Uploading multiple data sources (src 29)"
 refs: []
 
 ---
 
 ## Objective
-Prove a manually created risk is saved and findable.
+Prove that uploading an additional data source brings its data into the portfolio.
 
 ## Preconditions
-- A portfolio is open on the Risks tab.
+- A portfolio with one data source already uploaded exists.
 
-## Scenario: create and find a risk
+## Scenario: second upload adds data
 ```gherkin
-Given the Risks tab
-When the user clicks Add then Single Risk and creates it
-Then the risk is found when searched
+Given a portfolio with one data source
+When the user uploads a second file
+Then a data record from the second file is present
 ```
 
 ## References

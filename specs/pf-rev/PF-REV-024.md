@@ -1,29 +1,40 @@
 ---
-title: A risk links to its portfolio
+title: A data source can be mapped
 
 mode: manual
 oracle: intentional
 status: draft
-priority: low
+priority: medium
 
-tags: [regression, portfolio, risk]
-source: "Notion: Portfolio Review / Risks / Portfolio link (src 39)"
+tags: [regression, portfolio, datasource]
+source: "Notion: Portfolio Review / Data Sources / Map a DataSource (src 45)"
 refs: []
 
 ---
 
 ## Objective
-Prove the portfolio value in a risk popup navigates to that portfolio.
+Prove the mapping modal works for each data source type.
 
 ## Preconditions
-- A risk belonging to a portfolio exists.
+- An uploaded data source of the given type is available.
 
-## Scenario: portfolio link navigates
+## Scenario: map a data source by type
 ```gherkin
-Given a risk popup
-When the user clicks the Portfolio value
-Then they land on that portfolio's page
+Given an uploaded <type> data source
+When the user opens its mapping modal and completes the mapping
+Then the mapping is saved
 ```
+
+### Examples
+| type |
+|------|
+| Excel |
+| EDM |
+| CEDE |
+| Cedant agg |
+
+## Assumptions
+- Source lists the four mapping modals with no per-type outcome; inferred each mapping completes and saves. Confirm any type-specific differences.
 
 ## References
 - Source manual case in Notion (see `source`).

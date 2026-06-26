@@ -1,37 +1,29 @@
 ---
-title: Bulk actions on risks behave as expected
+title: Portfolio names must be unique
 
 mode: manual
 oracle: intentional
 status: draft
-priority: medium
+priority: low
 
-tags: [regression, portfolio, risk]
-source: "Notion: Portfolio Review / Risks / Actions on risks (src 35)"
+tags: [regression, portfolio]
+source: "Notion: Portfolio Review / Portfolio - Edit / Name cannot be reused (src 38)"
 refs: []
 
 ---
 
 ## Objective
-Prove the per-risk and multi-select actions each have their expected effect.
+Prove a portfolio cannot be renamed to an already-existing name.
 
 ## Preconditions
-- A portfolio with several risks exists.
+- Two portfolios exist.
 
-## Scenario: each action has its effect
+## Scenario: duplicate name refused
 ```gherkin
-Given one or more selected risks
-When the user performs <action>
-Then <effect>
+Given an existing portfolio name
+When the user renames another portfolio to that name
+Then the change is refused
 ```
-
-### Examples
-| action | effect |
-|--------|--------|
-| Delete | the risks are removed |
-| Edit an attribute | the attribute is updated on the risks |
-| Mute | the risks are excluded from aggregation |
-| Unmute | the risks are included again |
 
 ## References
 - Source manual case in Notion (see `source`).

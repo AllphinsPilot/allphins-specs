@@ -1,29 +1,28 @@
 ---
-title: Deleting a risk removes it and updates aggregation
+title: A risk links to its portfolio
 
 mode: manual
 oracle: intentional
 status: draft
-priority: medium
+priority: low
 
 tags: [regression, portfolio, risk]
-source: "Notion: Portfolio Review / Risks / Deleting single risks (src 31)"
+source: "Notion: Portfolio Review / Risks / Portfolio link (src 39)"
 refs: []
 
 ---
 
 ## Objective
-Prove a deleted risk disappears and the aggregation changes.
+Prove the portfolio value in a risk popup navigates to that portfolio.
 
 ## Preconditions
-- A portfolio with a risk contributing to an aggregation exists.
+- A risk belonging to a portfolio exists.
 
-## Scenario: delete a risk
+## Scenario: portfolio link navigates
 ```gherkin
-Given a risk
-When the user clicks its dustbin button
-Then the risk disappears
-And the aggregation changes
+Given a risk popup
+When the user clicks the Portfolio value
+Then they land on that portfolio's page
 ```
 
 ## References

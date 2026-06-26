@@ -1,28 +1,29 @@
 ---
-title: A single risk can be edited
+title: Deleting a risk removes it and updates aggregation
 
 mode: manual
 oracle: intentional
 status: draft
-priority: low
+priority: medium
 
 tags: [regression, portfolio, risk]
-source: "Notion: Portfolio Review / Risks / Edit single risk (src 23)"
+source: "Notion: Portfolio Review / Risks / Deleting single risks (src 31)"
 refs: []
 
 ---
 
 ## Objective
-Prove a risk's SOV, currencies, and attributes can be edited.
+Prove a deleted risk disappears and the aggregation changes.
 
 ## Preconditions
-- A portfolio with a risk exists.
+- A portfolio with a risk contributing to an aggregation exists.
 
-## Scenario: edit a risk
+## Scenario: delete a risk
 ```gherkin
 Given a risk
-When the user opens it and edits SOV, currency, and attributes
-Then the changes are saved
+When the user clicks its dustbin button
+Then the risk disappears
+And the aggregation changes
 ```
 
 ## References
