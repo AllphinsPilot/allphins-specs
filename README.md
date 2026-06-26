@@ -23,7 +23,7 @@ specs/<area>/<ID>.md
 | field    | meaning |
 |----------|---------|
 | title    | one-line human name |
-| mode     | `manual` or `automated` — how it is executed today. Everything starts `manual`; flip to `automated` when a Playwright test with the matching tag exists. |
+| mode     | `manual` or `automated`, how it is executed today. Everything starts `manual`; flip to `automated` when a Playwright test with the matching tag exists. |
 | oracle   | `intentional` (asserts a specific expected result), `characterization` (asserts only "unchanged from an approved baseline"), or `exploratory` (a human judges; no automated assertion). |
 | status   | `draft` (derived, not yet reviewed), `reviewed` (a human confirmed the behaviour), `active` (in use). All specs here are `draft`. |
 | priority | high / medium / low |
@@ -33,13 +33,13 @@ specs/<area>/<ID>.md
 
 ### Body sections
 
-- **Objective** — what behaviour this proves and why it matters.
-- **Preconditions** — state required before the scenario runs.
-- **Scenario: \<name\>** — one or more, each a fenced ```gherkin``` block. Families use an
+- **Objective**, what behaviour this proves and why it matters.
+- **Preconditions**, state required before the scenario runs.
+- **Scenario: \<name\>**, one or more, each a fenced ```gherkin``` block. Families use an
   `### Examples` table beneath the scenario.
-- **Assumptions** — present only when an oracle was inferred during derivation. Each line is
+- **Assumptions**, present only when an oracle was inferred during derivation. Each line is
   an inference a reviewer must confirm or correct. This is the review gate.
-- **References** — companion docs, data-setup notes, the source case.
+- **References**, companion docs, data-setup notes, the source case.
 
 ## Validation
 
@@ -49,14 +49,14 @@ bad enum values fail. A separate path lint enforces that every spec lives at
 
 ## Status of this batch
 
-Derived so far: areas **auth**, **book**, **pf-new**, **pf-rev**, and **agg** — 65 specs
+Derived so far: areas **auth**, **book**, **pf-new**, **pf-rev**, and **agg**, 65 specs
 from 85 of the 153 source cases. Every spec is `draft` and needs review, with special
 attention to the **Assumptions** sections where an oracle was inferred. Notes:
 
 - `book` case "Filters&Search" (source row 17) was intentionally **not** derived: it was
   classified no-oracle / do-not-concretize and stays a manual check outside this repo. It
   is one of 68 source cases left `deferred` (see the classification CSV for the per-row
-  reason — most are whole sections not yet processed: Aggregation detail, Risks, Policies,
+  reason, most are whole sections not yet processed: Aggregation detail, Risks, Policies,
   Databases, Home page, Portfolio Optimisation, Scenario Cards).
 - Several families were folded: the import flow is one spec with multiple scenarios, the
   template download and the two renewal entry points use `Examples` tables, and the
