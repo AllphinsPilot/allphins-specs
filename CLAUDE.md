@@ -9,8 +9,8 @@ Executable behaviour specs at `specs/<area>/<ID>.md`. Human reference: `README.m
 - The path is the identity: `<area>` = lowercased ID prefix, `<ID>` = `PREFIX-NNN`.
   Front-matter must satisfy `spec.schema.json`.
 - ONE scenario per spec. A spec has exactly one `## Scenario:`; parameterise with an
-  `### Examples` table, never a second scenario. A multi-scenario behaviour (a flow)
-  becomes its own area, one spec per scenario (e.g. `book-003/`). Enforced by
+  `### Examples` table, never a second scenario. A multi-scenario behaviour becomes several
+  specs in the same area, one per scenario. Enforced by
   `.github/scripts/validate_specs.py`.
 
 ## Spec operations → use the `managing-specs` skill

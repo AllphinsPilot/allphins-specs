@@ -13,7 +13,7 @@ Optional: --oracle {intentional,characterization,exploratory} (default intention
 
 A spec holds exactly one `## Scenario:` (parameterise with an `### Examples` table if
 needed). For a behaviour that needs several scenarios, make each scenario its own spec in
-a dedicated flow area, e.g. `--area book-003`.
+the same area (run this once per scenario with the same `--area`).
 
 Prints the path of the created spec on success.
 """

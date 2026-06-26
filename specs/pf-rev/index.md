@@ -33,3 +33,19 @@
 * [PF-REV-031](PF-REV-031.md) - Scenario selection updates Pricing and Evolution  `intentional`
 * [PF-REV-032](PF-REV-032.md) - Pricing and Evolution can compare two portfolios  `intentional`
 * [PF-REV-033](PF-REV-033.md) - Analytics tables populate when a risk exists  `intentional`
+* [PF-REV-034](PF-REV-034.md) - Delete a policy from the dustbin  `intentional`
+* [PF-REV-035](PF-REV-035.md) - Deleting a layer updates the dependent aggregation  `intentional`
+* [PF-REV-036](PF-REV-036.md) - Test structure matches deployed limit for an XoL  `intentional`
+* [PF-REV-037](PF-REV-037.md) - Consistency holds across policy configurations  `intentional`
+* [PF-REV-038](PF-REV-038.md) - Columns match the risk class  `intentional`
+* [PF-REV-039](PF-REV-039.md) - No Terror risks from EDMs only  `intentional`
+* [PF-REV-040](PF-REV-040.md) - Filtering by an attribute shows only matching risks  `intentional`
+* [PF-REV-041](PF-REV-041.md) - Search and filter compose  `intentional`
+* [PF-REV-042](PF-REV-042.md) - Expand opens a full page with a map for Energy  `intentional`
+* [PF-REV-043](PF-REV-043.md) - Expand availability by source  `intentional`
+* [PF-REV-044](PF-REV-044.md) - Delete a portfolio  `intentional`
+* [PF-REV-045](PF-REV-045.md) - Deleting a renewal clears the original's link  `intentional`
+* [PF-REV-046](PF-REV-046.md) - Generate audit history  `intentional`
+* [PF-REV-047](PF-REV-047.md) - Download the audit CSV  `intentional`
+* [PF-REV-048](PF-REV-048.md) - CSV content columns  `intentional`
+* [PF-REV-049](PF-REV-049.md) - An action adds a correct line  `intentional`

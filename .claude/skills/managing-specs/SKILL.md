@@ -30,8 +30,8 @@ Then edit the generated body: `Objective`, `Preconditions`, **exactly one**
 
 One scenario per spec — it must be atomic and independent. Parameterise a single scenario
 with an `### Examples` table, but never add a second `## Scenario:`. For a behaviour that
-needs several scenarios (e.g. an end-to-end flow), create a dedicated flow area and add one
-spec per scenario, e.g. `--area book-003` → `BOOK-003-001`, `BOOK-003-002`, …
+needs several scenarios (e.g. an end-to-end flow), create several specs in the same area,
+one per scenario — run `new_spec.py` once per scenario with the same `--area`.
 
 ## Delete a spec
 

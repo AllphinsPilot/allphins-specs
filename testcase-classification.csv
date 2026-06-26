@@ -24,7 +24,7 @@ You should receive an email with a link to a page to set a new password.
 3. Change the premium in an expired policy
 4. Check that the amount does not change",,Yes,Yes,Yes,Yes,Yes
 9,Home page,Next renewal,Does next renewals make sense?,exploratory,deferred,,"Home page; 'make sense' is a human judgment, no concrete oracle","Back, Front",Xclass,,1. Check the portfolios that are close to renewal or that they should have been renewed,,Yes,Yes,Yes,Yes,Yes
-10,Portfolio Review,Portfolio - Policies tab,Delete single policy,intentional,derived,PF-REV-001-002,Concretized in the first derivation pass,"Back, Front",,,"Check that your Aggregation changes when you delete policy.
+10,Portfolio Review,Portfolio - Policies tab,Delete single policy,intentional,derived,PF-REV-035,Concretized in the first derivation pass,"Back, Front",,,"Check that your Aggregation changes when you delete policy.
 1. Create 2 policies in a portfolio (one XoL and one QS benefits of XOL)
 2. Check the agg
 3. Delete the XOL
@@ -40,13 +40,13 @@ You should receive an email with a link to a page to set a new password.
 13,Home page,Next renewals,Are the links working?,intentional,deferred,,Home page; concrete navigation assertions (see-all -> book -> portfolio),,Xclass,,"1. Click on the ""see all""
 2. Make sure you end up on the book page
 3. Click on a portfolio and make sure you end up on the over page of that portfolio and that the status is the same",,Yes,Yes,Yes,Yes,Yes
-14,Portfolio Review,Risks,Display,intentional,derived,PF-REV-013-001,Concretized in the first derivation pass,,,,"Check there is no useless scrolling bar, that the display is okay, that the columns correspond to the portfolio risk class
+14,Portfolio Review,Risks,Display,intentional,derived,PF-REV-038,Concretized in the first derivation pass,,,,"Check there is no useless scrolling bar, that the display is okay, that the columns correspond to the portfolio risk class
 No Risks for Terror (if only EDMs are uploaded).",,Yes,Yes,Yes,Yes,Yes
 15,Book,Portfolio list,Display,characterization,derived,BOOK-001,Concretized in the first derivation pass,,Xclass,,"Make sure there is no scrolling bar, that the display is nice. Check through a few tabs",,Yes,Yes,Yes,Yes,Yes
-16,Portfolio Review,Risks,Search,intentional,derived,PF-REV-014-001,Concretized in the first derivation pass,Front,,,Make a few searches and make sure the results make sense and that nothing is missed,,Yes,Yes,Yes,Yes,Yes
+16,Portfolio Review,Risks,Search,intentional,derived,PF-REV-040,Concretized in the first derivation pass,Front,,,Make a few searches and make sure the results make sense and that nothing is missed,,Yes,Yes,Yes,Yes,Yes
 17,Book,Portfolio list,Filters&Search,exploratory,deferred,,No oracle ('filters working fine') -- do not concretize (README-flagged),Front,Xclass,,Check the filters and the rankings are working fine,,Yes,Yes,Yes,Yes,Yes
-18,Portfolio Review,Risks,Filter based on an Attribute,intentional,derived,PF-REV-014-001,Concretized as PF-REV-014-001 (scenario split),Front,,,"Use each filter and check it works and that nothing is missed (test different attributes, operators)",,Yes,Yes,Yes,Yes,Yes
-19,Book,Portfolio list,Tabs,intentional,derived,BOOK-002-001,Concretized in the first derivation pass,Back,Xclass,,"1. By default the Year column is unfiltered.
+18,Portfolio Review,Risks,Filter based on an Attribute,intentional,derived,PF-REV-040,Concretized as PF-REV-014-001 (scenario split),Front,,,"Use each filter and check it works and that nothing is missed (test different attributes, operators)",,Yes,Yes,Yes,Yes,Yes
+19,Book,Portfolio list,Tabs,intentional,derived,BOOK-002,Concretized in the first derivation pass,Back,Xclass,,"1. By default the Year column is unfiltered.
 2. Choosing a year value, portfolios visible should be either those
 with the same Year of Account
 or with active policies within the chosen year.
@@ -55,7 +55,7 @@ or the condition verified by point 4 below.
 
 3. Change dates of a policy in a portfolio and check it makes the portfolio change tabs accordingly
 4. Make sure that for a portfolio with expired [Year of Account] and only one policy, of [Period of Coverage] = Risk Attaching and expired dates, that portfolio is listed in the ""In force"" tab, so long as at least one Risk’s dates are valid on the current day.",,Yes,Yes,Yes,No,Yes
-20,Portfolio Review,Risks,Combine Filters and Search,intentional,derived,PF-REV-014-002,Concretized as PF-REV-014-002 (scenario split),Front,,,"Make a search and then put filters, check results. Do it in the other order, check results. Change pages to see if it works",,Yes,Yes,Yes,Yes,Yes
+20,Portfolio Review,Risks,Combine Filters and Search,intentional,derived,PF-REV-041,Concretized as PF-REV-014-002 (scenario split),Front,,,"Make a search and then put filters, check results. Do it in the other order, check results. Change pages to see if it works",,Yes,Yes,Yes,Yes,Yes
 21,Portfolio Review,Risks,Create single risk,intentional,derived,PF-REV-011,Concretized in the first derivation pass,"Front, there should be a text “Change to this field won’t affect the previous / next portfolio”",,,"Click on ""Add"" button, then on ""Single Risk"", create it, and make sure it is found when searched",,Yes,Yes,Yes,Yes,Yes
 22,New Portfolio,Portfolio,Create a Portfolio,intentional,derived,PF-NEW-001,Concretized in the first derivation pass,,,,"Go to Book, press the ""create a new portfolio"" button, then on creation, enter a portfolio name and client, and check you have a new portfolio created with no police, no SOV; create a policy and check it is present on the book list, agg filters and risk page filter",,Yes,Yes,Yes,Yes,Yes
 23,Portfolio Review,Risks,Edit single risk,intentional,derived,PF-REV-012,Concretized in the first derivation pass,"Back, Front",,,"In front of a risk, click on the risk and check the popup opens and can be edited with different SOV and currencies and attributes.",,Yes,Yes,Yes,Yes,Yes
@@ -74,12 +74,12 @@ or the condition verified by point 4 below.
 28,New Portfolio,Portfolio renewal,No Renewal button for already renewed portfolios,intentional,derived,PF-NEW-003,Concretized in the first derivation pass,,,,"On a portfolio already renewed, go to the overview page and check the ""renewal button"" is blocked",,Yes,Yes,Yes,Yes,Yes
 29,Portfolio Review,Risks,Uploading multiple data sources,intentional,derived,PF-REV-015,Concretized in the first derivation pass,,,,"1. Upload a second file
 2. Make sure on a random data record that the data is uploaded",,Yes,Yes,Yes,Yes,Yes
-30,New Portfolio,Policy creation,Create a single policy,intentional,derived,PF-NEW-004-001,Concretized in the first derivation pass,,,,"On a portfolio, click on ""New policy"" button and check the popup opens. Then enter a policy and check it is saved accordingly",,Yes,Yes,Yes,Yes,Yes
+30,New Portfolio,Policy creation,Create a single policy,intentional,derived,PF-NEW-004,Concretized in the first derivation pass,,,,"On a portfolio, click on ""New policy"" button and check the popup opens. Then enter a policy and check it is saved accordingly",,Yes,Yes,Yes,Yes,Yes
 31,Portfolio Review,Risks,Deleting single risks,intentional,derived,PF-REV-016,Concretized in the first derivation pass,,,,"1. Choose a risk
 2. Click on the dustbin button
 3. Check that the risk disappears
 4. Make sure the agg is changed",,Yes,Yes,Yes,Yes,Yes
-32,New Portfolio,Policy creation,Create multiple policies,intentional,derived,PF-NEW-004-002,Concretized in the first derivation pass,,,,"1. Perform previous step multiple time in a short amount of time
+32,New Portfolio,Policy creation,Create multiple policies,intentional,derived,PF-NEW-005,Concretized in the first derivation pass,,,,"1. Perform previous step multiple time in a short amount of time
 2. Make sure all changes are saved",,Yes,Yes,Yes,Yes,Yes
 33,Portfolio Review,Risks,Smart algos 1. Double-counting algo (Energy) 2. De-duplication algo (Cyber/Casualty) 3. Simulating risks algo (Cyber/Casualty). Do the algos work as expected?,intentional,derived,PF-REV-017,Concretized in the first derivation pass,,,,"1. Apply the algos
 2. Ensure the results correspond to the algo definitions",,Yes,Yes,Yes,Yes,Yes
@@ -88,7 +88,7 @@ or the condition verified by point 4 below.
 35,Portfolio Review,Risks,Actions on risks,intentional,derived,PF-REV-018,Concretized in the first derivation pass,,,,"1. Select one or multiple risks
 2. Try out Delete, Edit an attribute, Mute, Unmute actions
 3. Make sure the action is performed as expected",,Yes,Yes,Yes,Yes,Yes
-36,Portfolio Review,Portfolio - Edit,Delete Portfolio,intentional,derived,PF-REV-027-001,Concretized in the first derivation pass,,,,"1. Delete portfolio
+36,Portfolio Review,Portfolio - Edit,Delete Portfolio,intentional,derived,PF-REV-044,Concretized in the first derivation pass,,,,"1. Delete portfolio
 2. Make sure portfolio was deleted
 3. If a renewal portfolio was deleted, make sure the original one has no link to it anymore",,Yes,Yes,Yes,Yes,Yes
 37,Portfolio Review,Risks,Matching,intentional,derived,PF-REV-019,Concretized in the first derivation pass,,,,"1. Upload a data source
@@ -99,7 +99,7 @@ or the condition verified by point 4 below.
 2. Click on Portfolio value
 3. Make sure you land on the portfolio page",,Yes,Yes,Yes,Yes,Yes
 40,Portfolio Review,Portfolio - Policies tab,Display,characterization,derived,PF-REV-010,Concretized in the first derivation pass,,,,"On book page, click on a portfolio, check there is no useless scrolling bar, good display",,Yes,Yes,Yes,Yes,Yes
-41,Portfolio Review,Risks,Expand risk popup,intentional,derived,PF-REV-025-001,Concretized in the first derivation pass,,,,"1. Click on a risk
+41,Portfolio Review,Risks,Expand risk popup,intentional,derived,PF-REV-042,Concretized in the first derivation pass,,,,"1. Click on a risk
 2. Click on ""Expand"" 
 3. The risk edit popup should be now displayed as a page
 4. It should show a map for the geoloctaed ones (Energy only)",,Yes,Yes,Yes,Yes,Yes
@@ -129,9 +129,9 @@ or the condition verified by point 4 below.
 51,Portfolio Review,Data Sources,Download DataSource,intentional,derived,PF-REV-027,Concretized in the first derivation pass,,,,"1. Go to Data Sources
 2. Click on Actions arrow
 3. Click on Download",,Yes,Yes,Yes,Yes,Yes
-52,Portfolio Review,Portfolio - Policies tab,Delete single policy,intentional,derived,PF-REV-001-001,Concretized as PF-REV-001-001 (scenario split),,,,1. Check you can delete a policy by pressing on the small dustbin button,,Yes,Yes,Yes,Yes,Yes
+52,Portfolio Review,Portfolio - Policies tab,Delete single policy,intentional,derived,PF-REV-034,Concretized as PF-REV-001-001 (scenario split),,,,1. Check you can delete a policy by pressing on the small dustbin button,,Yes,Yes,Yes,Yes,Yes
 53,Portfolio Review,Cedant aggregations,Display,intentional,derived,PF-REV-029,Concretized in the first derivation pass,,,,1. Make sure there is data in Cedant agg in case the portfolio is considered for a chosen Scenario list,,Yes,Yes,Yes,Yes,Yes
-54,Portfolio Review,Portfolio - Policies tab,"Are the ""Test Structure"" button and ""Deployed Limit"" results consistent?",intentional,derived,PF-REV-008-001,Concretized in the first derivation pass,,,,"1. Click on the ""Test structure"" button
+54,Portfolio Review,Portfolio - Policies tab,"Are the ""Test Structure"" button and ""Deployed Limit"" results consistent?",intentional,derived,PF-REV-036,Concretized in the first derivation pass,,,,"1. Click on the ""Test structure"" button
 2. Enter 100bn
 3. Make sure it gives the same number as in ""Deployed Limit"" (if it’s only XoL)
 4. Enter different policies and do it again: a QS with limit, QS without limits, XOL with excess and limit, different cases of QS benefits",,Yes,Yes,Yes,Yes,Yes
@@ -171,7 +171,7 @@ or the condition verified by point 4 below.
 76,Aggregation,Agg page,Existing Scenario list/Scenario/TZ,intentional,derived,AGG-002,Concretized in the aggregation pass,,,,"1. Upload a new data source
 2. Make sure that the Scenario values are adapted accordingly",,Yes,Yes,Yes,Yes,Yes
 77,Databases,Asset list,Energy/Display,characterization,deferred,,Databases section not yet derived; display-only,,,,1. Make sure the display of Allphins Database is ok,,Yes,Yes,Yes,Yes,Yes
-78,Aggregation,Agg page,Correct consideration of LOD/RAD policies,intentional,derived,AGG-003-001,Concretized in the aggregation pass,,,,"1. Create at least one LOD and one RAD policy
+78,Aggregation,Agg page,Correct consideration of LOD/RAD policies,intentional,derived,AGG-009,Concretized in the aggregation pass,,,,"1. Create at least one LOD and one RAD policy
 2. Make sure that all exposures are considered for LOD and only relevant (inception date of risk within RAD dates) are considered for RAD policies.",,Yes,Yes,Yes,Yes,Yes
 79,Databases,Asset list,Energy/Search,exploratory,deferred,,Databases search; 'search for any asset' has no concrete oracle,,,,1. Search for any Asset,,Yes,Yes,Yes,Yes,Yes
 80,Aggregation,Agg page,Policy selection/Computation hypothesis,intentional,derived,AGG-003,Concretized in the aggregation pass,,,,"1. Try selecting different policies
@@ -179,7 +179,7 @@ or the condition verified by point 4 below.
 3. Make sure scenario exposures are adapted accordingly",,Yes,Yes,Yes,Yes,Yes
 81,Databases,Asset page,Energy/Asset page,exploratory,deferred,,Databases asset page; 'looks coherent' is a human judgment,,,,"1. Click on the Asset and verify that the page looks coherent in the right side
 2. Click on Expand, and verify that page looks coherent and page is opened in a new tab",🆕 Step #2 added,Yes,Yes,Yes,Yes,Yes
-82,Aggregation,Agg page,Policy live at/Exposure run off date,intentional,derived,AGG-005-001,Concretized in the aggregation pass,,,,"1. Change Policy live at
+82,Aggregation,Agg page,Policy live at/Exposure run off date,intentional,derived,AGG-011,Concretized in the aggregation pass,,,,"1. Change Policy live at
 2. Click on Compute
 3. Make sure that Exposure run off date is the same as Policy live at date and scenario exposures are adapted accordingly.
 4. Change only Exposure run off date
@@ -188,7 +188,7 @@ or the condition verified by point 4 below.
 83,Aggregation,Agg page,Gross view/Net of outwards/Net of reinstatement/Timeline,intentional,derived,AGG-004,Concretized in the aggregation pass,,,,"1. Check each of the views 
 2. Verify that the exposure values and graphs are displayed accordingly",,Yes,Yes,Yes,Yes,Yes
 84,Aggregation,Agg page,Pagination,exploratory,deferred,,"Aggregation pagination; weak oracle, not concretized this pass",,,,1. Go to different pages of the Scenario list,,Yes,Yes,Yes,Yes,Yes
-85,Aggregation,Agg page,Filtering,intentional,derived,AGG-011-001,Concretized in the aggregation pass,,,,1. Filter on attributes (only aggregation keys are possible),,Yes,Yes,Yes,Yes,Yes
+85,Aggregation,Agg page,Filtering,intentional,derived,AGG-015,Concretized in the aggregation pass,,,,1. Filter on attributes (only aggregation keys are possible),,Yes,Yes,Yes,Yes,Yes
 86,Aggregation,Agg page,Previos 1/1,intentional,derived,AGG-005,Concretized in the aggregation pass,,,,"1. Click on Previos 1/1
 2. Make sure that Policy live at and Exposure run off dates are set to the 1.1. of the previous to the current year",,Yes,Yes,Yes,Yes,Yes
 87,Aggregation,Agg Page,Today,intentional,derived,AGG-005,Concretized in the aggregation pass,,,,"1. Click on Today
@@ -222,7 +222,7 @@ or the condition verified by point 4 below.
 2. Check that Summary figures make sense",,Yes,Yes,Yes,Yes,Yes
 102,Portfolio Optimisation,Portfolio optimisation page,Policies,intentional,deferred,,Portfolio Optimisation policies match the agg page,,,,1. Make sure the same policies as on agg page are displayed,,Yes,Yes,Yes,Yes,Yes
 103,Login,SSO,Can I login using SSO?,intentional,derived,AUTH-004,Concretized in the first derivation pass,,,,Log in with SAML SSO,🆕 New test case,No,No,No,No,No
-104,Portfolio Review,Risks,Expand risk popup,intentional,derived,PF-REV-025-002,Concretized as PF-REV-025-002 (scenario split),,,,"1. Click on an EDM risk
+104,Portfolio Review,Risks,Expand risk popup,intentional,derived,PF-REV-043,Concretized as PF-REV-025-002 (scenario split),,,,"1. Click on an EDM risk
 2. Check that “Expand” option is not present
 3. Click on an Excel risk
 4. Check that “Expand” option is present",🆕 New test case,Yes,Yes,Yes,Yes,Yes
@@ -249,12 +249,12 @@ Do the same checks on GEM on Asset list and Asset full page",🆕 new test case
   2. On Energy, check that offshore assets & onshore assets are displayed correctly
   4. On other LoBs, check that no assets are displayed
   6. (true after 27/03 POD release) On Energy & Onshore, check that onshore & offshore assets’ shapes are displayed correctly",🆕 New test case,Yes,Yes,Yes,Yes,Yes
-110,Aggregation,Scenario List Creation,Aggregation keys selection,intentional,derived,AGG-011-002,Concretized in the aggregation pass,,,,"1. Click on “Create new” and select “Per attribute scenario list” page on Aggregations page
+110,Aggregation,Scenario List Creation,Aggregation keys selection,intentional,derived,AGG-016,Concretized in the aggregation pass,,,,"1. Click on “Create new” and select “Per attribute scenario list” page on Aggregations page
 2. Choose one geo-attribute as agg key
 3. Check that it is not possible to choose another one of the geo-attributes as Agg Key - other geo attributes are greyed and unselectable","🆕 New test case
 
 Valid when Ambroise releases during week of 23/03",Yes,Yes,Yes,Yes,Yes
-111,Aggregation,Agg page,Scenario Definition,intentional,derived,AGG-010-001,Concretized in the aggregation pass,,,,"1. Click on 👁️ ”See scenario definition”
+111,Aggregation,Agg page,Scenario Definition,intentional,derived,AGG-013,Concretized in the aggregation pass,,,,"1. Click on 👁️ ”See scenario definition”
   2. Check that scenario metadata displayed is coherent (name, Risk groups filter) in the left hand side panel
   3. Check that you can’t edit any of the displayed scenario metadata",🆕 New test case,No,No,No,Yes,No
 112,Aggregation,Agg page,Scenario Definition - Map,exploratory,deferred,,Aggregation scenario-definition map; visual,,,,"1. Click on 👁️ ”See scenario definition”
@@ -263,17 +263,17 @@ Valid when Ambroise releases during week of 23/03",Yes,Yes,Yes,Yes,Yes
   4. Check that you can select/unselect Layers
   4. On Energy, check that assets are displayed if selected in Layers dropdown
   5. (true after 27/03 POD release) On Onshore, check that assets’ shapes are displayed if selected in Layers dropdown",🆕 New test case,No,No,No,Yes,No
-113,Aggregation,Agg page,Scenario Definition,intentional,derived,AGG-010-002,Concretized in the aggregation pass,,,,"1. Click on 👁️ ”See scenario definition”
+113,Aggregation,Agg page,Scenario Definition,intentional,derived,AGG-014,Concretized in the aggregation pass,,,,"1. Click on 👁️ ”See scenario definition”
   2. Click on View aggregation
   3. Check that you land on computation page with coherent informations",🆕 New test case,No,No,No,Yes,No
-114,Aggregation,Scenario List Creation,Filtering,intentional,derived,AGG-012-001,Concretized in the aggregation pass,,,,"For Lakehouse LoB only
+114,Aggregation,Scenario List Creation,Filtering,intentional,derived,AGG-021,Concretized in the aggregation pass,,,,"For Lakehouse LoB only
 1. Create 1 filter that is not Peril, check that you can’t create the SL (Peril is an obligatory filter)
 3. Chose Peril as the filter, create another filter, check that you can not select Peril for the 2nd filter
 
 4. Do the same check when creating a Custom Scenario, a TZ report and a FG report","🆕 New test case
 
 Valid when Ambroise releases during week of 23/03",Yes,Yes,Yes,Yes,Yes
-115,Aggregation,Scenario List Creation,Filtering,intentional,derived,AGG-012-002,Concretized in the aggregation pass,,,,"1. Create 2 filters both using the same attribute and the “IS” operator
+115,Aggregation,Scenario List Creation,Filtering,intentional,derived,AGG-022,Concretized in the aggregation pass,,,,"1. Create 2 filters both using the same attribute and the “IS” operator
   2. . Check that a WARNING is displayed but that SL
   3. Modify 1 filter operator to be “IS NOT” (keep using the same attribute though)
   4. Check that WARNING is not displayed anymore and that you can create the SL
@@ -281,36 +281,36 @@ Valid when Ambroise releases during week of 23/03",Yes,Yes,Yes,Yes,Yes
   6. Check that WARNING is not displayed anymore and that you can create the SL","🆕 New test case
 
 Valid when Ambroise releases during week of 23/03",Yes,Yes,Yes,Yes,Yes
-116,Aggregation,Scenario List Creation,Filtering,intentional,derived,AGG-011-003,Concretized in the aggregation pass,,,,"For Per Attribute Scenarii, Custom Scenarii & TZ & FG
+116,Aggregation,Scenario List Creation,Filtering,intentional,derived,AGG-017,Concretized in the aggregation pass,,,,"For Per Attribute Scenarii, Custom Scenarii & TZ & FG
 1. Check that you can choose only 1 attribute value per attribute limitation
 2. Check that you can’t Filter on Location, Address, Address precision and any BZ attribute","🆕 New test case
 
 Valid when Ambroise releases during week of 23/03",Yes,Yes,Yes,Yes,Yes
-117,Aggregation,Scenario List Creation,Filtering,intentional,derived,AGG-011-004,Concretized in the aggregation pass,,,,"For Custom Scenarii & TZ & FG
+117,Aggregation,Scenario List Creation,Filtering,intentional,derived,AGG-018,Concretized in the aggregation pass,,,,"For Custom Scenarii & TZ & FG
   1. Create 1 filter with an attribute
   2. Create a 2nd filter within the same risk group
   3. Check that you can not select the same attribute for this 2nd filter, EXCEPT for Location attribute(it’s possible to choose it several times as Filter for Shapes intersection)","🆕 New test case
 
 Valid when Ambroise releases during week of 23/03",Yes,Yes,Yes,Yes,Yes
-118,Aggregation,Scenario List Creation,Filtering,intentional,derived,AGG-011-005,Concretized in the aggregation pass,,,,"For Custom Scenarii & TZ & FG
+118,Aggregation,Scenario List Creation,Filtering,intentional,derived,AGG-019,Concretized in the aggregation pass,,,,"For Custom Scenarii & TZ & FG
   1. Create 1 filter with a geo attribute
   2. Create a 2nd filter within the same risk group with a different geo attribute
   3. Check that you can select multiple different geo attributes as filters and combines them","🆕 New test case
 
 Valid when Ambroise releases during week of 23/03",Yes,Yes,Yes,Yes,Yes
-119,Aggregation,Scenario List Creation,Filtering,intentional,derived,AGG-011-006,Concretized in the aggregation pass,,,,"For Custom Scenarii & TZ & FG
+119,Aggregation,Scenario List Creation,Filtering,intentional,derived,AGG-020,Concretized in the aggregation pass,,,,"For Custom Scenarii & TZ & FG
   1. Create 1 filter with an attribute
   2. Select other attributes value for this fitler
   3. Check that you can select each of them and that there is an “OR” operator within filtered attributes","🆕 New test case
 
 Valid when Ambroise releases during week of 23/03",Yes,Yes,Yes,Yes,Yes
-120,Aggregation,Scenario List Creation,TZ number,intentional,derived,AGG-013-001,Concretized in the aggregation pass,,,,"1. Open TZ creation form
+120,Aggregation,Scenario List Creation,TZ number,intentional,derived,AGG-023,Concretized in the aggregation pass,,,,"1. Open TZ creation form
 2. In Terror, check that you can’t create the TZ report if “Number of Top Zones” is ≥50
 3. In Property, check that you can’t create the TZ report if “Number of Top Zones” is ≥15
 3. Activate https://stg.allphins.com/api/v1/4llph1ns_4dm1n/waffle/flag/383/change/ in django admin, check that you can create a TZ with if “Number of Top Zones” is up to 1000","🆕 New test case
 
 Valid when Ambroise releases during week of 23/03",Yes,Yes,Yes,Yes,Yes
-121,Aggregation,Scenario List Creation,TZ radius,intentional,derived,AGG-013-002,Concretized in the aggregation pass,,,,"1. Open TZ creation form
+121,Aggregation,Scenario List Creation,TZ radius,intentional,derived,AGG-024,Concretized in the aggregation pass,,,,"1. Open TZ creation form
 2. Enter 101 km in Radius
 3. 6. Check that TZ creation is NOT allowed for >100km and >62mi
 4. Check that TZ creation is allow for ≤100km and ≤62mi","🆕 New test case
@@ -351,28 +351,28 @@ Valid when Ambroise releases during week of 23/03",Yes,Yes,Yes,No,Yes
   5. Check that the following attributes where updated with correct values : Date,User,Action,Subject type,Subject ID,Subject name,Changed attribute,Old value,New value",🆕 New test case,No,No,No,Yes,No
 132,Risks,Portfolio - Risk tab,Risk Audit History generation,intentional,deferred,,Risks audit-history generation popup; folds into PF-REV-040 family,,,,"1. In actions column, click on the clock button
   2. Check that a “History Export is ready” pop-up appears in the bottom right hand side of the screen (it can take a few seconds)",🆕 New test case,No,No,No,Yes,No
-133,Portfolio Review,Portfolio page header,Portfolio Audit History generation,intentional,derived,PF-REV-040-001,Concretized in the first derivation pass,,,,"1. In the PF header, next to “Edit portfolio” and “Renewal” button, click on the “History” button
+133,Portfolio Review,Portfolio page header,Portfolio Audit History generation,intentional,derived,PF-REV-046,Concretized in the first derivation pass,,,,"1. In the PF header, next to “Edit portfolio” and “Renewal” button, click on the “History” button
   2. Check that a “History Export is ready” pop-up appears in the bottom right hand side of the screen (it can take a few seconds)",🆕 New test case,No,No,No,Yes,No
-134,Portfolio Review,Portfolio page header,Portfolio Audit History download,intentional,derived,PF-REV-040-002,Concretized in the first derivation pass,,,,"1. Click on Save on the “History Export is ready” pop up
+134,Portfolio Review,Portfolio page header,Portfolio Audit History download,intentional,derived,PF-REV-047,Concretized in the first derivation pass,,,,"1. Click on Save on the “History Export is ready” pop up
   2. Check that it triggers a csv download with name following this format allphins_export_history_portfolio_<rportfolio_uuid>_<group_id>_<YYYY>-<MM>-<DD>.csv",🆕 New test case,No,No,No,Yes,No
-135,Portfolio Review,Portfolio page header,Portfolio Audit History Content,intentional,derived,PF-REV-040-003,Concretized in the first derivation pass,,,,"1. Open the generated audit history csv downloaded
+135,Portfolio Review,Portfolio page header,Portfolio Audit History Content,intentional,derived,PF-REV-048,Concretized in the first derivation pass,,,,"1. Open the generated audit history csv downloaded
   2. Check that it has the corresponding fields present in the first columns : Object type,Object ID,Object name,Date,User,Action,Subject type,Subject ID,Subject name,Changed attribute,Old value,New value
   3. If no actions happened, it should only have the header with values listed in point #2
   4. If actions happened, it should have as many rows",🆕 New test case,No,No,No,Yes,No
-136,Portfolio Review,Portfolio page header,Portfolio Audit History Content,intentional,derived,PF-REV-040-004,Concretized in the first derivation pass,,,,"1. Upload a new Datasource
+136,Portfolio Review,Portfolio page header,Portfolio Audit History Content,intentional,derived,PF-REV-049,Concretized in the first derivation pass,,,,"1. Upload a new Datasource
   2. Click on Audit history button
   3. Open the downloaded Audit History csv report
   4. Check that a new line appears
   5. Check that the following attributes where updated with correct values : Date,User,Action,Subject type,Subject ID,Subject name,Changed attribute,Old value,New value",🆕 New test case,No,No,No,Yes,No
-137,Portfolio Review,Portfolio - Policies tab,Policy Audit History generation,intentional,derived,PF-REV-040-001,Concretized as PF-REV-040-001 (scenario split),,,,"1. In actions column, click on the clock button
+137,Portfolio Review,Portfolio - Policies tab,Policy Audit History generation,intentional,derived,PF-REV-046,Concretized as PF-REV-040-001 (scenario split),,,,"1. In actions column, click on the clock button
   2. Check that a “History Export is ready” pop-up appears in the bottom right hand side of the screen",🆕 New test case,No,No,No,Yes,No
-138,Portfolio Review,Portfolio - Policies tab,Policy Audit History download,intentional,derived,PF-REV-040-002,Concretized as PF-REV-040-002 (scenario split),,,,"1. Click on Save on the “History Export is ready” pop up
+138,Portfolio Review,Portfolio - Policies tab,Policy Audit History download,intentional,derived,PF-REV-047,Concretized as PF-REV-040-002 (scenario split),,,,"1. Click on Save on the “History Export is ready” pop up
   2. Check that it triggers a csv download with name following this format allphins_export_history_policy_<policy_id>_<group_id>_<YYYY>-<MM>-<DD>.csv",🆕 New test case,No,No,No,Yes,No
-139,Portfolio Review,Portfolio - Policies tab,Policy Audit History Content,intentional,derived,PF-REV-040-003,Concretized as PF-REV-040-003 (scenario split),,,,"1. Open the generated audit history csv downloaded
+139,Portfolio Review,Portfolio - Policies tab,Policy Audit History Content,intentional,derived,PF-REV-048,Concretized as PF-REV-040-003 (scenario split),,,,"1. Open the generated audit history csv downloaded
   2. Check that it has the corresponding fields present in the first columns : Object type,Object ID,Object name,Date,User,Action,Subject type,Subject ID,Subject name,Changed attribute,Old value,New value
   3. If no actions happened, it should only have the header with values listed in point #2
   4. If actions happened, it should have as many rows",🆕 New test case,No,No,No,Yes,No
-140,Portfolio Review,Portfolio - Policies tab,Policy Audit History Content,intentional,derived,PF-REV-040-004,Concretized as PF-REV-040-004 (scenario split),,,,"1. Modify a policy share
+140,Portfolio Review,Portfolio - Policies tab,Policy Audit History Content,intentional,derived,PF-REV-049,Concretized as PF-REV-040-004 (scenario split),,,,"1. Modify a policy share
   2. Click on Audit history button
   3. Open the downloaded Audit History csv report
   4. Check that a new line appears
@@ -397,23 +397,23 @@ Valid when Ambroise releases during week of 23/03",Yes,Yes,Yes,No,Yes
 4. Check that Scenario id, scenario name and exposure are listed in the Mapping modal
 5. Check that DS is listed as Aggregation with provider “Allphins”
 6. Check in the PF/Cedant Agg tab, in th that the corresponding cedant agg is correctly filled with all the scenarii & exposures from the file",🆕,Yes,Yes,Yes,Yes,Yes
-147,Book,Portfolio list,Import Portfolio & Policies modal,intentional,derived,BOOK-003-001,Concretized in the first derivation pass,,Xclass,,"1. Click on the 🔽 on the “Create Portfolio” CTA
+147,Book,Portfolio list,Import Portfolio & Policies modal,intentional,derived,BOOK-005,Concretized in the first derivation pass,,Xclass,,"1. Click on the 🔽 on the “Create Portfolio” CTA
 2. Click on Import Portfolio & Policies
 3. Check that a modal opens with 1 upload zone & 2 CTA to download a template with the group data or without it (empty columns)
 4. Check that FAQ is clickable and redirection works in a new tab",🆕 new test case,Yes,Yes,Yes,Yes,Yes
-148,Book,Portfolio list,Import Portfolio & Policies empty template,intentional,derived,BOOK-003-002,Concretized in the first derivation pass,,Xclass,,"1. Click on “Download empty template”
+148,Book,Portfolio list,Import Portfolio & Policies empty template,intentional,derived,BOOK-006,Concretized in the first derivation pass,,Xclass,,"1. Click on “Download empty template”
 2. Check that you get a xlsx file that is a template with columns and empty values in the rows",🆕 new test case,Yes,Yes,Yes,Yes,Yes
-149,Book,Portfolio list,Import Portfolio & Policies template with data,intentional,derived,BOOK-003-002,Concretized in the first derivation pass,,Xclass,,"1. Click on “Download template with data”
+149,Book,Portfolio list,Import Portfolio & Policies template with data,intentional,derived,BOOK-006,Concretized in the first derivation pass,,Xclass,,"1. Click on “Download template with data”
 2. Check that you get a xlsx file that is a template with columns and each rows is a unique portoflio x policy couple",🆕 new test case,Yes,Yes,Yes,Yes,Yes
-150,Book,Portfolio list,Import Portfolio & Policies via template upload,intentional,derived,BOOK-003-003,Concretized in the first derivation pass,,Xclass,,"1. Create a new PF by creating a new line without PF id & policy id
+150,Book,Portfolio list,Import Portfolio & Policies via template upload,intentional,derived,BOOK-007,Concretized in the first derivation pass,,Xclass,,"1. Create a new PF by creating a new line without PF id & policy id
 2. Create a new policy inside an existing PF by duplicating an existing line in this PF and remove policy id
 3. Modify an existing PF name
 4. Modify an existing policy name, reinstatement (type, number and values), and coverage
 5. Upload template in the modal
 6. Check that a “Are you sure?” modal pops up with a list of PF & policies that will be created/edited
 7. Check that numbers of PF & policies unchanged/edited/created are correct",🆕 new test case,Yes,Yes,Yes,Yes,Yes
-151,Book,Portfolio list,Cancel Import Portfolio & Policies via template upload,intentional,derived,BOOK-003-004,Concretized in the first derivation pass,,Xclass,,"1. When on the “Are you sure modal”, click on cancel
+151,Book,Portfolio list,Cancel Import Portfolio & Policies via template upload,intentional,derived,BOOK-008,Concretized in the first derivation pass,,Xclass,,"1. When on the “Are you sure modal”, click on cancel
 2. Check that the modal closes and no PF or policies is created/edited",🆕 new test case,Yes,Yes,Yes,Yes,Yes
-152,Book,Portfolio list,Import Portfolio & Policies via template upload,intentional,derived,BOOK-003-005,Concretized in the first derivation pass,,Xclass,,"1. When on the “Are you sure modal”, click on cancel
+152,Book,Portfolio list,Import Portfolio & Policies via template upload,intentional,derived,BOOK-009,Concretized in the first derivation pass,,Xclass,,"1. When on the “Are you sure modal”, click on cancel
 2. Check that the modal closes and new PF/policies are effectively created/edited (reload page to make sure)
 3. Check values of PF/policies createad/edited as mentioned in the earlier Test Case",🆕 new test case,Yes,Yes,Yes,Yes,Yes
