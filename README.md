@@ -22,6 +22,21 @@ specs/<area>/<ID>.md
   (e.g. `book/BOOK-005.md` … `BOOK-009.md`). Each scenario stays atomic and independently
   runnable.
 
+### Areas
+
+Each area maps to a product surface of the Allphins platform.
+
+| area     | ID prefix | what it covers |
+|----------|-----------|----------------|
+| `auth`   | `AUTH`    | Authentication: sign in/out, sessions, access. |
+| `book`   | `BOOK`    | The Book — the portfolio list, its year/tab filters, and portfolio/policy import. |
+| `pf-new` | `PF-NEW`  | Creating a new portfolio and its policies. |
+| `pf-rev` | `PF-REV`  | Portfolio Review — the open-portfolio workspace: policies, risks, audit history, edit/delete. |
+| `agg`    | `AGG`     | Aggregation — scenario lists, aggregation keys/filters, and exposure computation. |
+
+New areas are added as new product surfaces are covered; keep the slug short and lowercase
+and use it as the uppercased ID prefix (`pf-rev` → `PF-REV-001`).
+
 ### Front-matter fields
 
 | field    | meaning |
