@@ -1,0 +1,46 @@
+name: Spec run
+
+# Manually create a tracking issue to coordinate a manual execution pass.
+# The issue lists every reviewed/active spec with nested pass/fail checkboxes.
+# Automated (Playwright) results are intentionally NOT recorded here; they will
+# use native test reporting when those tests exist.
+
+on:
+  workflow_dispatch:
+    inputs:
+      label:
+        description: "Run label (e.g. 'smoke 2026-06-26' or a release name)"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  create-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build issue body
+        run: |
+          .github/scripts/build_run_issue.sh > run-body.md
+
+      - name: Ensure label exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create spec-run \
+            --description "Manual spec execution run" \
+            --color 1d76db \
+            --force
+
+      - name: Create run issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "Spec run: ${{ inputs.label }}" \
+            --label spec-run \
+            --body-file run-body.md

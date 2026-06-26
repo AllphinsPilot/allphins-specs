@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://allphins.dev/spec.schema.json",
+  "title": "Allphins spec front-matter",
+  "description": "Validates the YAML front-matter of a spec .md file. id and area are NOT fields: id is the filename without .md and area is the folder; both are checked by a separate path lint, not by this schema.",
+  "type": "object",
+  "required": [
+    "title",
+    "mode",
+    "oracle",
+    "status",
+    "priority"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 3
+    },
+    "mode": {
+      "enum": [
+        "manual",
+        "automated"
+      ]
+    },
+    "oracle": {
+      "enum": [
+        "intentional",
+        "characterization",
+        "exploratory"
+      ]
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "reviewed",
+        "active"
+      ]
+    },
+    "priority": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source": {
+      "type": "string"
+    },
+    "refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+# Local-only helper scripts (not part of the repo)
+*.local.sh
+
+# macOS
+.DS_Store
