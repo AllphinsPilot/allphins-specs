@@ -3,7 +3,7 @@ title: Matching risks from a data source
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, risk, datasource]

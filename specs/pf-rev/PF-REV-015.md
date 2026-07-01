@@ -3,7 +3,7 @@ title: Uploading a second data source adds its risks
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, risk, datasource]

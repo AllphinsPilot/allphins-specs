@@ -3,7 +3,7 @@ title: Cancelling discards the import
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, book, import]

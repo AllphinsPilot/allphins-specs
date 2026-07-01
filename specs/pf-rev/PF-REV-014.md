@@ -3,7 +3,7 @@ title: Muting a risk removes it from aggregation
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, risk]

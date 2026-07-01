@@ -3,7 +3,7 @@ title: Bulk actions on risks behave as expected
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, risk]

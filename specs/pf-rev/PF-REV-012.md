@@ -3,7 +3,7 @@ title: A single risk can be edited
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, risk]

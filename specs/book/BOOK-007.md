@@ -3,7 +3,7 @@ title: Uploading a filled template previews the changes with correct counts
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, book, import]

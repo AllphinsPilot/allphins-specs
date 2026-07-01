@@ -3,7 +3,7 @@ title: Create a single policy
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: high
 
 tags: [smoke, regression, portfolio]

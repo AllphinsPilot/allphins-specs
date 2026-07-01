@@ -42,6 +42,16 @@ python .github/scripts/delete_spec.py <ID>
 Removes the file, reconciles `testcase-classification.csv` (its source row flips back to
 `deferred`), cleans up an emptied area folder, and regenerates the indexes.
 
+## Trace a spec to its source testcase(s)
+
+```bash
+python .github/scripts/trace.py <ID> [<ID> ...]
+```
+
+Prints the source testcase(s) the spec was derived from (functionality, steps, comments)
+from `testcase-classification.csv` — the authoritative spec ↔ testcase mapping. Use this
+rather than the spec's `source` field when you need the exact origin.
+
 ## After editing a spec's title (or any spec set change)
 
 Indexes are generated. Regenerate and verify:

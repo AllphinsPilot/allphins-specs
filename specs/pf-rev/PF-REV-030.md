@@ -3,7 +3,7 @@ title: Pricing and Evolution tabs render
 
 mode: manual
 oracle: characterization
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, pricing, evolution]

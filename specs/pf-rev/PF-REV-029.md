@@ -3,7 +3,7 @@ title: Cedant aggregation shows data when considered for a scenario list
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, aggregation]

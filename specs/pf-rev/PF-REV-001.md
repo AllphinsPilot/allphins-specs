@@ -3,7 +3,7 @@ title: Policy special conditions are reflected in aggregation
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, policy]

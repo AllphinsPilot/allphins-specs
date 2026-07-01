@@ -3,7 +3,7 @@ title: Smart algos produce results matching their definitions
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: high
 
 tags: [regression, portfolio, risk, energy, cyber, casualty]

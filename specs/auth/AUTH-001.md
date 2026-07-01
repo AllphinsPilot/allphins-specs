@@ -3,7 +3,7 @@ title: A user with valid credentials can sign in
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: high
 
 tags: [smoke, regression, auth]

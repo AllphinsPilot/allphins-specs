@@ -3,7 +3,7 @@ title: Deleting a layer updates the dependent aggregation
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: high
 
 tags: [regression, portfolio, policy]

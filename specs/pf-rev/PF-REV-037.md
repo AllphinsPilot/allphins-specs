@@ -3,7 +3,7 @@ title: Consistency holds across policy configurations
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: high
 
 tags: [regression, portfolio, policy]

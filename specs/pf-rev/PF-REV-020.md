@@ -3,7 +3,7 @@ title: A risk links to its portfolio
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, risk]

@@ -3,7 +3,7 @@ title: Expand opens a full page with a map for Energy
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, risk, energy]

@@ -3,7 +3,7 @@ title: Portfolio attributes can be edited
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio]

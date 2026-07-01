@@ -3,7 +3,7 @@ title: Deleting a data source removes its risks
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, datasource]

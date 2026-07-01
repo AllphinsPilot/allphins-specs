@@ -3,7 +3,7 @@ title: Open the import modal
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, book, import]

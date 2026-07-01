@@ -3,7 +3,7 @@ title: Test structure matches deployed limit for an XoL
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: high
 
 tags: [regression, portfolio, policy]

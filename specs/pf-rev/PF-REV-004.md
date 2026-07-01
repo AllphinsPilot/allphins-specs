@@ -3,7 +3,7 @@ title: Benefit-from loops between layers are forbidden
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, policy]

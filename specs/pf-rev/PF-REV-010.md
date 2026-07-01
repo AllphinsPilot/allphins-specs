@@ -3,7 +3,7 @@ title: Policies tab renders
 
 mode: manual
 oracle: characterization
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, policy]

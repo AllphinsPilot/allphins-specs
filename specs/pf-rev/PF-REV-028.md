@@ -3,7 +3,7 @@ title: A Scenario List report can be mapped as a data source
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, datasource]

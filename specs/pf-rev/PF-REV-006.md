@@ -3,7 +3,7 @@ title: A policy can be duplicated
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, policy]

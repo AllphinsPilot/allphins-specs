@@ -3,7 +3,7 @@ title: Changing a policy's dates moves the portfolio between tabs
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, book]

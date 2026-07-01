@@ -3,7 +3,7 @@ title: A single risk can be created
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, risk]

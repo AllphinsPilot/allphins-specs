@@ -3,7 +3,7 @@ title: Expand availability by source
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, risk, energy]

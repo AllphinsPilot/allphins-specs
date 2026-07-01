@@ -3,7 +3,7 @@ title: Portfolio names must be unique
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio]

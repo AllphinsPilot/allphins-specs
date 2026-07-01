@@ -3,7 +3,7 @@ title: Analytics tables populate when a risk exists
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, analytics, casualty, cyber]

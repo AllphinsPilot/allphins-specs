@@ -3,7 +3,7 @@ title: Pricing and Evolution can compare two portfolios
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, pricing, evolution]

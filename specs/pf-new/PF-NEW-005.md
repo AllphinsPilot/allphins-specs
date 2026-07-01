@@ -3,7 +3,7 @@ title: Create several policies in quick succession
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: high
 
 tags: [smoke, regression, portfolio]

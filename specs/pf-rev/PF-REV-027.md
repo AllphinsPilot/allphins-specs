@@ -3,7 +3,7 @@ title: A data source can be downloaded
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, datasource]

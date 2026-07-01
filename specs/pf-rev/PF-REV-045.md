@@ -3,7 +3,7 @@ title: Deleting a renewal clears the original's link
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio]

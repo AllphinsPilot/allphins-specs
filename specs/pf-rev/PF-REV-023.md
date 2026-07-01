@@ -3,7 +3,7 @@ title: A data source can be uploaded
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, datasource]

@@ -3,7 +3,7 @@ title: Policy dates persist after editing
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, policy]

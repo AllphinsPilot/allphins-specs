@@ -3,7 +3,7 @@ title: Columns match the risk class
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, risk]

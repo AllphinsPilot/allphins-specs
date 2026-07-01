@@ -3,7 +3,7 @@ title: Policy labels can be managed
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, policy]

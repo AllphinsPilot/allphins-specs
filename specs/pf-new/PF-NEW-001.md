@@ -3,7 +3,7 @@ title: A new portfolio can be created and a policy added to it
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: high
 
 tags: [smoke, regression, portfolio]

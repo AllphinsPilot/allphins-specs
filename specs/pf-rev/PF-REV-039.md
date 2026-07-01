@@ -3,7 +3,7 @@ title: No Terror risks from EDMs only
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, risk]

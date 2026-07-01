@@ -3,7 +3,7 @@ title: A user can sign in via SAML SSO
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: high
 
 tags: [smoke, regression, auth]

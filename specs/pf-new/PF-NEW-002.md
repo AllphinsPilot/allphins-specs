@@ -3,7 +3,7 @@ title: A portfolio can be renewed
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, renewal]

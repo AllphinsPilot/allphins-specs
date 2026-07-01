@@ -3,7 +3,7 @@ title: Deleting a risk removes it and updates aggregation
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, risk]

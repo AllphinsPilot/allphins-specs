@@ -3,7 +3,7 @@ title: A user can reset a forgotten password and sign in with the new one
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, auth]

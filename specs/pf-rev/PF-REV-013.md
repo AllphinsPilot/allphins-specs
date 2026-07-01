@@ -3,7 +3,7 @@ title: Meta-attributes fill on match and clear on unmatch
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, risk, cyber, casualty, pr]

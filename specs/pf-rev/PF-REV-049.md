@@ -3,7 +3,7 @@ title: An action adds a correct line
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, policy, audit]

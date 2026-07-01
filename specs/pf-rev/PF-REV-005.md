@@ -3,7 +3,7 @@ title: A policy share of 0% is allowed
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: low
 
 tags: [regression, portfolio, policy]

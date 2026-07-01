@@ -92,3 +92,7 @@ inferred. Notes:
   `spec_id`, and the `reason`. This file is also the system of record for the original
   product-team export: it carries each case's `how_to_do_it` steps, `endpoint`, `type`,
   `classes`, `comments`, and per-release columns, so no upstream detail is lost.
+- To see the source testcase(s) a given spec was derived from, run
+  `python .github/scripts/trace.py <ID>` — it reverses the CSV mapping and prints the
+  originating cases (steps and comments). This is authoritative; a spec's `source` field is
+  prose provenance and may be coarser than the precise per-spec mapping in the CSV.

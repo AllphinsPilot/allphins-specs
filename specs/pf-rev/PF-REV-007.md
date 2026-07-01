@@ -3,7 +3,7 @@ title: Total Premium equals the sum of premium times share
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, portfolio, policy]

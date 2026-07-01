@@ -3,7 +3,7 @@ title: The portfolio list renders
 
 mode: manual
 oracle: characterization
-status: draft
+status: active
 priority: low
 
 tags: [regression, book]

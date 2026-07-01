@@ -3,7 +3,7 @@ title: A risk-attaching expired policy stays In force while a risk is live
 
 mode: manual
 oracle: intentional
-status: draft
+status: active
 priority: medium
 
 tags: [regression, book]
