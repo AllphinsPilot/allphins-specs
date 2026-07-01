@@ -9,18 +9,23 @@ the source the e2e Playwright tests are written against, joined by ID.
 Each spec is one markdown file with YAML front-matter and a body.
 
 ```
-specs/<area>/<ID>.md
+specs/<area>/<ID>_<slug>.md
 ```
 
-- **id** is the file name without `.md` (e.g. `AUTH-001`). It is also the tag a Playwright
+- **id** is the part of the file name before `_` (e.g. `AUTH-001` in
+  `AUTH-001_sign-in-with-valid-credentials.md`). It is also the tag a Playwright
   test carries (`@AUTH-001`) so the spec and its test are linked. There is no `id` field;
   the path is the id.
+- **slug** is the part after `_`: a short, kebab-case *capability name* for the behaviour,
+  so the file reads meaningfully to a human. It is editorial (derived from the title but
+  deliberately terse) and may be shortened by hand; it is not required to round-trip the
+  title. `new_spec.py` derives it from the title by default (override with `--slug`).
 - **area** is the folder (e.g. `auth`). There is no `area` field; the folder is the area.
-  The folder name is the lowercased ID prefix, so `pf-new/PF-NEW-002.md`.
+  The folder name is the lowercased ID prefix, so `pf-new/PF-NEW-002_renew-portfolio.md`.
 - A behaviour that needs several scenarios (e.g. importing portfolios) is **not** one
   multi-scenario spec. It is several specs in the same area, one per scenario
-  (e.g. `book/BOOK-005.md` … `BOOK-009.md`). Each scenario stays atomic and independently
-  runnable.
+  (e.g. `book/BOOK-005_open-import-modal.md` … `BOOK-009_confirm-applies-import.md`).
+  Each scenario stays atomic and independently runnable.
 
 ### Areas
 
@@ -66,8 +71,9 @@ and use it as the uppercased ID prefix (`pf-rev` → `PF-REV-001`).
 
 `spec.schema.json` validates the front-matter (run in CI). It is strict: unknown keys and
 bad enum values fail. `.github/scripts/validate_specs.py` is the structural lint: it
-enforces that every spec lives at `specs/<area>/<ID>.md`, that the folder matches the ID
-prefix, that IDs are unique, and that **each spec contains exactly one `## Scenario:`**.
+enforces that every spec lives at `specs/<area>/<ID>_<slug>.md`, that the file name carries
+a kebab-case slug, that the folder matches the ID prefix, that IDs are unique, and that
+**each spec contains exactly one `## Scenario:`**.
 `generate_indexes.py --check` separately verifies the index files are in sync.
 
 ## Status of this batch

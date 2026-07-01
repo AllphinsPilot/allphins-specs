@@ -7,7 +7,7 @@
 # Each spec is a link to its file with nested pass/fail checkboxes:
 #
 #   ## Authentication
-#   - [AUTH-001](specs/auth/AUTH-001.md) — A user with valid credentials can sign in
+#   - [AUTH-001](specs/auth/AUTH-001_sign-in-with-valid-credentials.md) — A user with valid credentials can sign in
 #     - [ ] pass
 #     - [ ] fail
 #
@@ -85,9 +85,11 @@ for area in $(ordered_areas); do
       reviewed | active) ;;
       *) continue ;;
     esac
-    id="$(basename "$f" .md)"
+    fname="$(basename "$f")"
+    # File is `<ID>_<slug>.md`; show the ID, link the real file.
+    id="${fname%%_*}"; id="${id%.md}"
     title="$(strip_quotes "$(fm_value "$f" title)")"
-    section="$section- [$id](specs/$area/$id.md) — $title
+    section="$section- [$id](specs/$area/$fname) — $title
   - [ ] pass
   - [ ] fail
 "

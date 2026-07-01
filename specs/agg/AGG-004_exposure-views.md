@@ -1,0 +1,32 @@
+---
+title: Gross, net, and timeline exposure views each show their own values
+
+mode: manual
+oracle: intentional
+status: active
+priority: medium
+
+tags: [regression, aggregation]
+source: "Notion: Aggregation / Agg page / Gross view/Net of outwards/Net of reinstatement/Timeline (src 83)"
+refs: []
+
+---
+
+## Objective
+Prove each exposure view is available and shows the corresponding exposure values and graphs.
+
+## Preconditions
+- A computed scenario with exposure exists.
+
+## Scenario: each view shows its corresponding values
+```gherkin
+Given a computed scenario
+When the user switches between the Gross, Net of outwards, Net of reinstatement, and Timeline views
+Then each view displays the exposure values and graphs corresponding to that view
+```
+
+## Assumptions
+- Source asks to "verify the exposure values and graphs are displayed accordingly" without stating the numeric relationship between views; this spec asserts each view renders its own consistent values. The exact gross/net arithmetic is left for a dedicated oracle. Confirm whether the net relationships should also be asserted here.
+
+## References
+- Source manual case in Notion (see `source`).

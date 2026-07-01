@@ -67,13 +67,22 @@ def main() -> int:
         return 1
 
     area = spec_id.rsplit("-", 1)[0].lower()
-    path = SPECS / area / f"{spec_id}.md"
-    if not path.exists():
-        print(f"error: {path.relative_to(REPO)} does not exist", file=sys.stderr)
+    area_dir = SPECS / area
+    # File is `<ID>_<slug>.md`; fall back to a bare `<ID>.md` for legacy names.
+    matches = sorted(area_dir.glob(f"{spec_id}_*.md")) + [
+        p for p in [area_dir / f"{spec_id}.md"] if p.exists()
+    ]
+    if not matches:
+        print(f"error: no spec file for {spec_id} under specs/{area}/", file=sys.stderr)
+        return 1
+    if len(matches) > 1:
+        names = ", ".join(m.name for m in matches)
+        print(f"error: {spec_id} is ambiguous ({names})", file=sys.stderr)
         return 1
 
+    path = matches[0]
     path.unlink()
-    print(f"deleted specs/{area}/{spec_id}.md")
+    print(f"deleted {path.relative_to(REPO)}")
 
     reconciled = reconcile_classification(spec_id)
     if reconciled:

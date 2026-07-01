@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Structural lint for specs.
 
-Enforces, for every `specs/<area>/<ID>.md`:
+Enforces, for every `specs/<area>/<ID>_<slug>.md`:
+  - the file name is `<ID>_<slug>.md` (ID + a kebab-case capability slug);
   - the folder name equals the lowercased ID prefix (path == identity);
   - the ID is `PREFIX-NNN` and unique across the repo;
   - the file contains exactly one `## Scenario:` (a spec is a single, atomic scenario;
@@ -18,6 +19,8 @@ import re
 import sys
 from pathlib import Path
 
+from _common import SEP, SLUG_RE, id_from_stem, slug_from_stem
+
 REPO = Path(__file__).resolve().parents[2]
 SPECS = REPO / "specs"
 
@@ -32,8 +35,16 @@ def main() -> int:
         if md.name == "index.md":
             continue
         rel = md.relative_to(REPO)
-        spec_id = md.stem
+        stem = md.stem
         area = md.parent.name
+
+        if SEP not in stem:
+            errors.append(f"{rel}: name must be '<ID>{SEP}<slug>.md' (missing '{SEP}<slug>')")
+            continue
+        spec_id = id_from_stem(stem)
+        spec_slug = slug_from_stem(stem)
+        if not SLUG_RE.match(spec_slug):
+            errors.append(f"{rel}: slug {spec_slug!r} is not kebab-case [a-z0-9-]")
 
         m = ID_RE.match(spec_id)
         if not m:

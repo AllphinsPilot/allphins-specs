@@ -1,0 +1,34 @@
+---
+title: A second filter in a risk group cannot reuse the same attribute
+
+mode: manual
+oracle: intentional
+status: active
+priority: medium
+
+tags: [regression, aggregation]
+source: "Notion: Aggregation / Scenario List Creation / Filtering & Aggregation keys selection (src 85, 110, 116, 117, 118, 119)"
+refs: []
+
+---
+
+## Objective
+
+Prove a second filter in the same risk group cannot reuse an attribute already filtered, except Location.
+
+## Preconditions
+
+- The user is creating a scenario (Custom scenario, Per-attribute scenario list, TZ, or FG as noted) on the Aggregations page.
+
+## Scenario: a second filter in the same risk group cannot reuse the same attribute
+
+```gherkin
+Given a first filter exists in a risk group
+When the user adds a second filter in the same risk group
+Then the same attribute cannot be selected for the second filter
+And Location is the only attribute allowed to be chosen more than once
+```
+
+## References
+
+- Source manual cases in Notion (see `source`).
