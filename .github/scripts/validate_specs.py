@@ -3,7 +3,7 @@
 
 Enforces, for every `specs/<area>/<ID>_<slug>.md`:
   - the file name is `<ID>_<slug>.md` (ID + a kebab-case capability slug);
-  - the folder name equals the lowercased ID prefix (path == identity);
+  - `<area>` is a known area and its ID prefix matches the registry (AREA_PREFIX);
   - the ID is `PREFIX-NNN` and unique across the repo;
   - the file contains exactly one `## Scenario:` (a spec is a single, atomic scenario;
     parameterise with an `### Examples` table, never a second scenario).
@@ -19,24 +19,30 @@ import re
 import sys
 from pathlib import Path
 
-from _common import SEP, SLUG_RE, id_from_stem, slug_from_stem
+from _common import (
+    AREA_PREFIX,
+    ID_RE,
+    SEP,
+    SLUG_RE,
+    id_from_stem,
+    prefix_from_id,
+    slug_from_stem,
+)
 
 REPO = Path(__file__).resolve().parents[2]
 SPECS = REPO / "specs"
-
-ID_RE = re.compile(r"^(?P<prefix>[A-Z0-9]+(?:-[A-Z0-9]+)*)-(?P<num>\d{3})$")
 
 
 def main() -> int:
     errors: list[str] = []
     seen: dict[str, Path] = {}
 
-    for md in sorted(SPECS.glob("*/*.md")):
+    for md in sorted(SPECS.rglob("*.md")):
         if md.name == "index.md":
             continue
         rel = md.relative_to(REPO)
         stem = md.stem
-        area = md.parent.name
+        area = md.parent.relative_to(SPECS).as_posix()
 
         if SEP not in stem:
             errors.append(f"{rel}: name must be '<ID>{SEP}<slug>.md' (missing '{SEP}<slug>')")
@@ -51,9 +57,13 @@ def main() -> int:
             errors.append(f"{rel}: id {spec_id!r} is not PREFIX-NNN")
             continue
 
-        if m.group("prefix").lower() != area:
+        expected_prefix = AREA_PREFIX.get(area)
+        if expected_prefix is None:
+            errors.append(f"{rel}: unknown area {area!r} (not in AREA_PREFIX registry)")
+        elif prefix_from_id(spec_id) != expected_prefix:
             errors.append(
-                f"{rel}: folder {area!r} != lowercased ID prefix {m.group('prefix').lower()!r}"
+                f"{rel}: ID prefix {prefix_from_id(spec_id)!r} != area prefix "
+                f"{expected_prefix!r} for area {area!r}"
             )
 
         if spec_id in seen:

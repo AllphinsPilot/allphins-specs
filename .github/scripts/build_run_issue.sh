@@ -6,8 +6,8 @@
 # `status` is `reviewed` or `active` (draft specs are excluded by design).
 # Each spec is a link to its file with nested pass/fail checkboxes:
 #
-#   ## Authentication
-#   - [AUTH-001](specs/auth/AUTH-001_sign-in-with-valid-credentials.md) — A user with valid credentials can sign in
+#   ## User Management
+#   - [USER-001](specs/user-management/USER-001_sign-in-with-valid-credentials.md) — A user with valid credentials can sign in
 #     - [ ] pass
 #     - [ ] fail
 #
@@ -44,38 +44,31 @@ strip_quotes() { # <value>
   printf '%s' "$v"
 }
 
-# Human display name for an area: the H1 of its index.md, else the slug.
-area_name() { # <area>
-  local idx="$SPECS/$1/index.md" h
-  if [ -f "$idx" ]; then
-    h="$(grep -m1 '^# ' "$idx" || true)"
-    if [ -n "$h" ]; then printf '%s' "${h#\# }"; return; fi
-  fi
-  printf '%s' "$1"
+# Leaf areas: directories (relative to specs/) that directly hold a non-index spec.
+leaf_areas() {
+  find "$SPECS" -type f -name '*.md' ! -name index.md -print \
+    | while IFS= read -r f; do d="$(dirname "$f")"; printf '%s\n' "${d#"$SPECS"/}"; done \
+    | sort -u
 }
 
-# Curated area order from the root index, then any remaining areas appended.
-ordered_areas() {
-  local order="" a d
-  if [ -f "$SPECS/index.md" ]; then
-    order="$(grep -oE '\]\([a-z0-9-]+/\)' "$SPECS/index.md" \
-      | sed -E 's/^\]\(([a-z0-9-]+)\/\)$/\1/')"
-  fi
-  local result=""
-  for a in $order; do
-    [ -d "$SPECS/$a" ] && result="$result $a"
-  done
-  for d in "$SPECS"/*/; do
-    a="$(basename "$d")"
-    case " $result " in *" $a "*) ;; *) result="$result $a" ;; esac
-  done
-  printf '%s' "$result"
+# Pretty header for an area path: "book/risks" -> "Book / Risks".
+area_header() { # <area-path>
+  printf '%s' "$1" | awk -F/ '{
+    out=""
+    for (i=1;i<=NF;i++) {
+      s=$i; gsub(/-/," ",s)
+      n=split(s,w," "); seg=""
+      for (j=1;j<=n;j++) seg=seg (j>1?" ":"") toupper(substr(w[j],1,1)) substr(w[j],2)
+      out=out (i>1?" / ":"") seg
+    }
+    printf "%s", out
+  }'
 }
 
 body=""
 eligible=0
 
-for area in $(ordered_areas); do
+for area in $(leaf_areas); do
   section=""
   for f in "$SPECS/$area"/*.md; do
     [ -e "$f" ] || continue
@@ -96,7 +89,7 @@ for area in $(ordered_areas); do
     eligible=$((eligible + 1))
   done
   if [ -n "$section" ]; then
-    body="$body## $(area_name "$area")
+    body="$body## $(area_header "$area")
 $section
 "
   fi
