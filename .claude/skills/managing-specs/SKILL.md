@@ -9,10 +9,13 @@ description: >-
 
 # Managing Allphins specs
 
-Specs live at `specs/<area>/<ID>.md` (e.g. `specs/auth/AUTH-001.md`). The path is the
-identity: `<area>` is the lowercased ID prefix, `<ID>` is `PREFIX-NNN`. Use the scripts
-below — never hand-create/rename/delete spec files, invent IDs, or edit any `index.md`
-(they are generated).
+Specs live at `specs/<area>/<ID>_<slug>.md` (e.g.
+`specs/auth/AUTH-001_sign-in-with-valid-credentials.md`). The path is the identity:
+`<area>` is the lowercased ID prefix, `<ID>` is `PREFIX-NNN` (the part before `_`, and the
+Playwright tag `@AUTH-001`), and `<slug>` is a short kebab-case capability name after `_`.
+Use the scripts below — never hand-create/rename/delete spec files, invent IDs, or edit any
+`index.md` (they are generated). `new_spec.py` derives the slug from the title (override
+with `--slug`); to rename existing specs, use `rename_specs.py`.
 
 ## Create a spec
 
@@ -20,9 +23,11 @@ below — never hand-create/rename/delete spec files, invent IDs, or edit any `i
 python .github/scripts/new_spec.py --area <area> --title "<title>"
 ```
 
-Picks the next free ID, scaffolds front-matter + body, and regenerates the indexes.
+Picks the next free ID, scaffolds front-matter + body at `<ID>_<slug>.md`, and regenerates
+the indexes. The slug defaults to a slugified title.
 Optional: `--oracle {intentional,characterization,exploratory}` (default `intentional`),
-`--priority {high,medium,low}` (default `medium`).
+`--priority {high,medium,low}` (default `medium`),
+`--slug <kebab-case>` (a short capability name; default derived from the title).
 
 Then edit the generated body: `Objective`, `Preconditions`, **exactly one**
 `## Scenario:` block (fenced ```` ```gherkin ````), and `## References`. Add an

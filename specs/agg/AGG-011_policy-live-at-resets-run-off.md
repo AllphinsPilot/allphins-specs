@@ -1,0 +1,38 @@
+---
+title: Changing Policy live at resets the run-off date and recomputes
+
+mode: manual
+oracle: intentional
+status: active
+priority: high
+
+tags: [regression, aggregation]
+source: "Notion: Aggregation / Agg page / Policy live at/Exposure run off date (src 82)"
+refs: []
+
+---
+
+## Objective
+
+Prove that changing "Policy live at" sets "Exposure run off date" to the same date and recomputes the scenario exposures accordingly.
+
+## Preconditions
+
+- A portfolio with a computed scenario exists.
+
+## Scenario: changing Policy live at sets the run-off date and recomputes
+
+```gherkin
+Given a computed scenario
+When the user changes "Policy live at" and clicks Compute
+Then "Exposure run off date" equals the new "Policy live at" date
+And the scenario exposures are adapted accordingly
+```
+
+## Assumptions
+
+- Source states "Exposure run off date is the same as Policy live at date" after changing Policy live at; the run-off date is assumed to track Policy live at only until it is overridden independently. Confirm this coupling.
+
+## References
+
+- Source manual case in Notion (see `source`).

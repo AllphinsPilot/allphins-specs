@@ -8,8 +8,12 @@ Usage:
     python .github/scripts/new_spec.py --area auth --title "A user can sign out"
     python .github/scripts/new_spec.py            # prompts for area and title
 
+The file is named `<ID>_<slug>.md`; the slug defaults to a slugified title and can be
+overridden with --slug (a short capability name).
+
 Optional: --oracle {intentional,characterization,exploratory} (default intentional)
           --priority {high,medium,low}                          (default medium)
+          --slug <kebab-case>                                   (default: from title)
 
 A spec holds exactly one `## Scenario:` (parameterise with an `### Examples` table if
 needed). For a behaviour that needs several scenarios, make each scenario its own spec in
@@ -24,6 +28,8 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+
+from _common import SLUG_RE, slug as slugify
 
 SCRIPTS = Path(__file__).resolve().parent
 REPO = SCRIPTS.parents[1]
@@ -48,7 +54,7 @@ def next_id(area: str) -> str:
         for md in area_dir.glob("*.md"):
             if md.name == "index.md":
                 continue
-            m = re.match(rf"^{re.escape(prefix)}-(\d+)$", md.stem)
+            m = re.match(rf"^{re.escape(prefix)}-(\d+)(?:_.*)?$", md.stem)
             if m:
                 highest = max(highest, int(m.group(1)))
     return f"{prefix}-{highest + 1:03d}"
@@ -97,6 +103,10 @@ def main() -> int:
     p.add_argument("--title", help="one-line human title")
     p.add_argument("--oracle", choices=ORACLES, default="intentional")
     p.add_argument("--priority", choices=PRIORITIES, default="medium")
+    p.add_argument(
+        "--slug",
+        help="short capability slug for the filename (default: derived from the title)",
+    )
     args = p.parse_args()
 
     area = args.area or input("Area (e.g. auth, book, agg, pf-rev): ").strip()
@@ -109,10 +119,15 @@ def main() -> int:
         print("error: title must be at least 3 characters", file=sys.stderr)
         return 1
 
+    spec_slug = args.slug if args.slug else slugify(title)
+    if not SLUG_RE.match(spec_slug):
+        print(f"error: slug {spec_slug!r} is not kebab-case [a-z0-9-]", file=sys.stderr)
+        return 1
+
     spec_id = next_id(area)
     area_dir = SPECS / area
     area_dir.mkdir(parents=True, exist_ok=True)
-    path = area_dir / f"{spec_id}.md"
+    path = area_dir / f"{spec_id}_{spec_slug}.md"
     if path.exists():
         print(f"error: {path} already exists", file=sys.stderr)
         return 1

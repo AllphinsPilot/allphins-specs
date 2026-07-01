@@ -19,6 +19,8 @@ import re
 import sys
 from pathlib import Path
 
+from _common import id_from_stem
+
 REPO = Path(__file__).resolve().parents[2]
 SPECS = REPO / "specs"
 
@@ -64,30 +66,30 @@ def existing_area_order() -> list[str]:
     return order
 
 
-def collect() -> dict[str, list[tuple[str, str, str]]]:
-    """area -> sorted list of (id, title, oracle)."""
-    areas: dict[str, list[tuple[str, str, str]]] = {}
+def collect() -> dict[str, list[tuple[str, str, str, str]]]:
+    """area -> sorted list of (id, filename, title, oracle)."""
+    areas: dict[str, list[tuple[str, str, str, str]]] = {}
     for md in sorted(SPECS.glob("*/*.md")):
         if md.name == "index.md":
             continue
         fm = parse_front_matter(md.read_text())
-        spec_id = md.stem
+        spec_id = id_from_stem(md.stem)
         areas.setdefault(md.parent.name, []).append(
-            (spec_id, fm.get("title", ""), fm.get("oracle", ""))
+            (spec_id, md.name, fm.get("title", ""), fm.get("oracle", ""))
         )
     for specs in areas.values():
         specs.sort(key=lambda s: s[0])
     return areas
 
 
-def render_area_index(area: str, specs: list[tuple[str, str, str]]) -> str:
+def render_area_index(area: str, specs: list[tuple[str, str, str, str]]) -> str:
     lines = [f"# {area_display_name(area)}", ""]
-    for spec_id, title, oracle in specs:
-        lines.append(f"* [{spec_id}]({spec_id}.md) - {title}  `{oracle}`")
+    for spec_id, filename, title, oracle in specs:
+        lines.append(f"* [{spec_id}]({filename}) - {title}  `{oracle}`")
     return "\n".join(lines) + "\n"
 
 
-def render_root_index(areas: dict[str, list[tuple[str, str, str]]]) -> str:
+def render_root_index(areas: dict[str, list[tuple[str, str, str, str]]]) -> str:
     curated = existing_area_order()
     ordered = [a for a in curated if a in areas]
     ordered += sorted(a for a in areas if a not in ordered)

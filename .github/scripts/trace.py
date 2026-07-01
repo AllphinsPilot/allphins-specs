@@ -17,6 +17,8 @@ import csv
 import sys
 from pathlib import Path
 
+from _common import id_from_stem
+
 REPO = Path(__file__).resolve().parents[2]
 SPECS = REPO / "specs"
 CSV = REPO / "testcase-classification.csv"
@@ -25,7 +27,8 @@ FIELDS = ("section", "topic_page", "functionality")
 
 
 def spec_path(spec_id: str) -> Path | None:
-    hits = list(SPECS.glob(f"*/{spec_id}.md"))
+    # File is `<ID>_<slug>.md`; also accept a legacy bare `<ID>.md`.
+    hits = list(SPECS.glob(f"*/{spec_id}_*.md")) + list(SPECS.glob(f"*/{spec_id}.md"))
     return hits[0] if hits else None
 
 
@@ -45,7 +48,9 @@ def main(argv: list[str]) -> int:
             by_spec.setdefault(r["spec_id"], []).append(r)
 
     missing = 0
-    for spec_id in argv:
+    for arg in argv:
+        # Accept a bare ID, a full stem, or a filename; reduce to the ID.
+        spec_id = id_from_stem(Path(arg).stem if arg.endswith(".md") else arg)
         path = spec_path(spec_id)
         loc = path.relative_to(REPO) if path else "(no spec file found)"
         if not path:
