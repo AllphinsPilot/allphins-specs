@@ -10,18 +10,22 @@ description: >-
 # Managing Allphins specs
 
 Specs live at `specs/<area>/<ID>_<slug>.md` (e.g.
-`specs/auth/AUTH-001_sign-in-with-valid-credentials.md`). The path is the identity:
-`<area>` is the lowercased ID prefix, `<ID>` is `PREFIX-NNN` (the part before `_`, and the
-Playwright tag `@AUTH-001`), and `<slug>` is a short kebab-case capability name after `_`.
-Use the scripts below — never hand-create/rename/delete spec files, invent IDs, or edit any
-`index.md` (they are generated). `new_spec.py` derives the slug from the title (override
-with `--slug`); to rename existing specs, use `rename_specs.py`.
+`specs/book/risks/RISK-002_edit-risk.md`). The path is the identity: `<area>` is a
+(possibly nested) folder path such as `book/risks`, `<ID>` is `PREFIX-NNN` (the part before
+`_`, and the e2e test tag `@RISK-002`, Cypress), and `<slug>` is a short kebab-case
+capability name after `_`. The area→prefix mapping is the `AREA_PREFIX` registry in
+`.github/scripts/_common.py` (`book/risks` ⇒ `RISK`). Use the scripts below — never
+hand-create/rename/delete spec files, invent IDs, or edit any `index.md` (they are
+generated). `new_spec.py` derives the slug from the title (override with `--slug`).
 
 ## Create a spec
 
 ```bash
-python .github/scripts/new_spec.py --area <area> --title "<title>"
+python .github/scripts/new_spec.py --area book/risks --title "<title>"
 ```
+
+`--area` is a registry path (e.g. `book/risks`, `aggregations/scenarios`,
+`user-management`); see `AREA_PREFIX` in `_common.py` for the full list.
 
 Picks the next free ID, scaffolds front-matter + body at `<ID>_<slug>.md`, and regenerates
 the indexes. The slug defaults to a slugified title.
@@ -77,7 +81,7 @@ Only `reviewed`/`active` specs are included. Admit specs first:
 Then trigger the **Spec run** GitHub Action (`.github/workflows/spec-run.yml`,
 `workflow_dispatch`) with a run label. It opens a `spec-run` issue listing eligible specs
 grouped by area with pass/fail checkboxes, and hard-fails if none are eligible. Automated
-(Playwright) results do not go in this issue.
+(Cypress) results do not go in this issue.
 
 ## Validate
 

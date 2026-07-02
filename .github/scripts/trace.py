@@ -6,8 +6,8 @@ testcase to the spec it became) and prints, for each given spec ID, the matching
 source rows with their steps and comments.
 
 Usage:
-    python .github/scripts/trace.py PF-REV-046
-    python .github/scripts/trace.py BOOK-009 BOOK-008      # several at once
+    python .github/scripts/trace.py PORT-017
+    python .github/scripts/trace.py DS-011 DS-010          # several at once
 
 Exit code is 1 if any given ID matched no spec file.
 """
@@ -27,8 +27,8 @@ FIELDS = ("section", "topic_page", "functionality")
 
 
 def spec_path(spec_id: str) -> Path | None:
-    # File is `<ID>_<slug>.md`; also accept a legacy bare `<ID>.md`.
-    hits = list(SPECS.glob(f"*/{spec_id}_*.md")) + list(SPECS.glob(f"*/{spec_id}.md"))
+    # File is `<area>/<ID>_<slug>.md` at any depth; also accept a legacy bare `<ID>.md`.
+    hits = list(SPECS.rglob(f"{spec_id}_*.md")) + list(SPECS.rglob(f"{spec_id}.md"))
     return hits[0] if hits else None
 
 

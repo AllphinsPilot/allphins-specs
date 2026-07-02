@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
-"""Regenerate the spec index.md files from each spec's front-matter.
+"""Regenerate the spec index.md files from the folder tree and front-matter.
 
-Every `specs/<area>/index.md` lists the area's specs (id, title, oracle), and the
-root `specs/index.md` lists the areas with their spec counts. Those lines duplicate
-data that lives in the spec front-matter, so they drift the moment a `title` or
-`oracle` changes. This script is the single source that rebuilds them.
+Every directory under `specs/` gets an `index.md`:
+  - a leaf area (holds specs) lists its specs (id, title, oracle);
+  - a group directory (holds sub-areas) lists its sub-areas with spec counts;
+  - the root lists the top-level entries.
+These duplicate data that lives in the tree/front-matter, so this script is the single
+source that rebuilds them.
 
 Usage:
     python .github/scripts/generate_indexes.py          # rewrite the index files
     python .github/scripts/generate_indexes.py --check   # exit 1 if any index is stale
 
-The --check mode writes nothing; it is meant for a pre-commit hook or CI step
-(not wired up yet). Run it from anywhere; paths are resolved relative to the repo.
+The --check mode writes nothing; it is meant for a pre-commit hook or CI step.
+Run it from anywhere; paths resolve relative to the repo.
 """
 from __future__ import annotations
 
@@ -19,13 +21,13 @@ import re
 import sys
 from pathlib import Path
 
-from _common import id_from_stem
+from _common import display_name, id_from_stem, order_key
 
 REPO = Path(__file__).resolve().parents[2]
 SPECS = REPO / "specs"
 
 ROOT_TITLE = "Allphins specs"
-ROOT_INTRO = "Behaviour specifications grouped by area. Open an area to list its specs."
+ROOT_INTRO = "Behaviour specifications grouped by product area. Open an area to list its specs."
 
 
 def parse_front_matter(text: str) -> dict[str, str]:
@@ -43,73 +45,57 @@ def parse_front_matter(text: str) -> dict[str, str]:
     return out
 
 
-def area_display_name(area: str) -> str:
-    """Curated H1 from the existing area index, or a titlecased fallback."""
-    idx = SPECS / area / "index.md"
+def curated_title(d: Path) -> str:
+    """Keep a curated H1 from an existing index.md, else derive from the folder name."""
+    idx = d / "index.md"
     if idx.exists():
         for line in idx.read_text().splitlines():
             if line.startswith("# "):
                 return line[2:].strip()
-    return area.replace("-", " ").title()
+    return ROOT_TITLE if d == SPECS else display_name(d.name)
 
 
-def existing_area_order() -> list[str]:
-    """Area order curated in the current root index; unknown areas appended later."""
-    root = SPECS / "index.md"
-    if not root.exists():
-        return []
-    order = []
-    for line in root.read_text().splitlines():
-        m = re.match(r"\*\s*\[[^\]]+\]\(([^/]+)/\)", line)
-        if m:
-            order.append(m.group(1))
-    return order
+def spec_count(d: Path) -> int:
+    return sum(1 for md in d.rglob("*.md") if md.name != "index.md")
 
 
-def collect() -> dict[str, list[tuple[str, str, str, str]]]:
-    """area -> sorted list of (id, filename, title, oracle)."""
-    areas: dict[str, list[tuple[str, str, str, str]]] = {}
-    for md in sorted(SPECS.glob("*/*.md")):
-        if md.name == "index.md":
-            continue
+def subdirs(d: Path) -> list[Path]:
+    kids = [k for k in d.iterdir() if k.is_dir()]
+    kids.sort(key=lambda k: order_key(k.relative_to(SPECS).as_posix()))
+    return kids
+
+
+def specs_in(d: Path) -> list[Path]:
+    return sorted((f for f in d.glob("*.md") if f.name != "index.md"), key=lambda f: f.stem)
+
+
+def render(d: Path) -> str:
+    title = ROOT_TITLE if d == SPECS else curated_title(d)
+    lines = [f"# {title}", ""]
+    if d == SPECS:
+        lines += [ROOT_INTRO, ""]
+    for sub in subdirs(d):
+        n = spec_count(sub)
+        lines.append(f"* [{display_name(sub.name)}]({sub.name}/) - {n} spec{'' if n == 1 else 's'}")
+    for md in specs_in(d):
         fm = parse_front_matter(md.read_text())
-        spec_id = id_from_stem(md.stem)
-        areas.setdefault(md.parent.name, []).append(
-            (spec_id, md.name, fm.get("title", ""), fm.get("oracle", ""))
-        )
-    for specs in areas.values():
-        specs.sort(key=lambda s: s[0])
-    return areas
-
-
-def render_area_index(area: str, specs: list[tuple[str, str, str, str]]) -> str:
-    lines = [f"# {area_display_name(area)}", ""]
-    for spec_id, filename, title, oracle in specs:
-        lines.append(f"* [{spec_id}]({filename}) - {title}  `{oracle}`")
+        lines.append(f"* [{id_from_stem(md.stem)}]({md.name}) - {fm.get('title','')}  `{fm.get('oracle','')}`")
     return "\n".join(lines) + "\n"
 
 
-def render_root_index(areas: dict[str, list[tuple[str, str, str, str]]]) -> str:
-    curated = existing_area_order()
-    ordered = [a for a in curated if a in areas]
-    ordered += sorted(a for a in areas if a not in ordered)
-    lines = [f"# {ROOT_TITLE}", "", ROOT_INTRO, ""]
-    for area in ordered:
-        n = len(areas[area])
-        lines.append(f"* [{area_display_name(area)}]({area}/) - {n} specs")
-    return "\n".join(lines) + "\n"
+def all_dirs() -> list[Path]:
+    dirs = [SPECS]
+    dirs += [d for d in SPECS.rglob("*") if d.is_dir()]
+    return dirs
 
 
 def main() -> int:
     check = "--check" in sys.argv[1:]
-    areas = collect()
-    if not areas:
+    if not any(SPECS.rglob("*.md")):
         print("no specs found under", SPECS, file=sys.stderr)
         return 1
 
-    targets: dict[Path, str] = {SPECS / "index.md": render_root_index(areas)}
-    for area, specs in areas.items():
-        targets[SPECS / area / "index.md"] = render_area_index(area, specs)
+    targets = {d / "index.md": render(d) for d in all_dirs()}
 
     stale = []
     for path, content in targets.items():

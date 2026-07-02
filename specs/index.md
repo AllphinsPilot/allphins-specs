@@ -1,9 +1,8 @@
 # Allphins specs
 
-Behaviour specifications grouped by area. Open an area to list its specs.
+Behaviour specifications grouped by product area. Open an area to list its specs.
 
-* [Authentication](auth/) - 4 specs
-* [Book (portfolio list & import)](book/) - 9 specs
-* [New portfolio & policies](pf-new/) - 5 specs
-* [Portfolio Review](pf-rev/) - 49 specs
-* [Aggregation](agg/) - 24 specs
+* [Book](book/) - 61 specs
+* [Analytics](analytics/) - 1 spec
+* [Aggregations](aggregations/) - 25 specs
+* [User Management](user-management/) - 4 specs

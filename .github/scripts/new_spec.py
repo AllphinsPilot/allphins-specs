@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
 """Scaffold a new spec with the correct format, then regenerate the indexes.
 
-Computes the next free ID for the area, writes a templated spec file, and runs
-generate_indexes.py so the index.md files stay in sync.
+Computes the next free ID for the area (prefix from the AREA_PREFIX registry), writes a
+templated spec file at `specs/<area>/<ID>_<slug>.md`, and runs generate_indexes.py.
 
 Usage:
-    python .github/scripts/new_spec.py --area auth --title "A user can sign out"
+    python .github/scripts/new_spec.py --area book/risks --title "A risk can be tagged"
     python .github/scripts/new_spec.py            # prompts for area and title
 
-The file is named `<ID>_<slug>.md`; the slug defaults to a slugified title and can be
-overridden with --slug (a short capability name).
+`--area` is a registry path such as `book/risks`, `aggregations/scenarios`, or
+`user-management` (see AREA_PREFIX in _common.py for the full list). The file name's
+slug defaults to a slugified title; override with --slug.
 
 Optional: --oracle {intentional,characterization,exploratory} (default intentional)
           --priority {high,medium,low}                          (default medium)
           --slug <kebab-case>                                   (default: from title)
 
 A spec holds exactly one `## Scenario:` (parameterise with an `### Examples` table if
-needed). For a behaviour that needs several scenarios, make each scenario its own spec in
-the same area (run this once per scenario with the same `--area`).
+needed). For a behaviour that needs several scenarios, make each scenario its own spec.
 
 Prints the path of the created spec on success.
 """
@@ -29,7 +29,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from _common import SLUG_RE, slug as slugify
+from _common import AREA_PREFIX, SLUG_RE, slug as slugify
 
 SCRIPTS = Path(__file__).resolve().parent
 REPO = SCRIPTS.parents[1]
@@ -46,8 +46,7 @@ def yaml_scalar(s: str) -> str:
     return s
 
 
-def next_id(area: str) -> str:
-    prefix = area.upper()
+def next_id(area: str, prefix: str) -> str:
     area_dir = SPECS / area
     highest = 0
     if area_dir.exists():
@@ -99,7 +98,7 @@ def regenerate_indexes() -> None:
 
 def main() -> int:
     p = argparse.ArgumentParser(description="Create a new spec and regenerate indexes.")
-    p.add_argument("--area", help="area slug, e.g. auth, book, agg, pf-rev")
+    p.add_argument("--area", help="area path, e.g. book/risks, aggregations/scenarios")
     p.add_argument("--title", help="one-line human title")
     p.add_argument("--oracle", choices=ORACLES, default="intentional")
     p.add_argument("--priority", choices=PRIORITIES, default="medium")
@@ -109,11 +108,14 @@ def main() -> int:
     )
     args = p.parse_args()
 
-    area = args.area or input("Area (e.g. auth, book, agg, pf-rev): ").strip()
+    area = args.area or input("Area (e.g. book/risks, aggregations/scenarios): ").strip()
     title = args.title or input("Title: ").strip()
 
-    if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", area or ""):
-        print(f"error: invalid area slug {area!r} (use lowercase, e.g. pf-rev)", file=sys.stderr)
+    prefix = AREA_PREFIX.get(area)
+    if prefix is None:
+        print(f"error: unknown area {area!r}. Known areas:", file=sys.stderr)
+        for a in AREA_PREFIX:
+            print(f"    {a}", file=sys.stderr)
         return 1
     if not title or len(title) < 3:
         print("error: title must be at least 3 characters", file=sys.stderr)
@@ -124,7 +126,7 @@ def main() -> int:
         print(f"error: slug {spec_slug!r} is not kebab-case [a-z0-9-]", file=sys.stderr)
         return 1
 
-    spec_id = next_id(area)
+    spec_id = next_id(area, prefix)
     area_dir = SPECS / area
     area_dir.mkdir(parents=True, exist_ok=True)
     path = area_dir / f"{spec_id}_{spec_slug}.md"
